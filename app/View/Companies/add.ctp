@@ -1,8 +1,8 @@
 <div class="companies form">
-<?php echo $this->Form->create('Company'); ?>
+<?php echo $this->Form->create('Company vvv'); ?>
 	<fieldset>
 		<legend>Pelayanan Yang diinginkan</legend>
-		<?php foreach($services as $key=>$item) : ?>
+		<?php foreach($services as $key=>$item) : ?> 
 		
 		<?php echo $this->Form->checkbox('CompanyService.'.$key.'.service_id',array('options'=>$item['Service']['id']));?>
 		<?php echo $this->Form->label($item['Service']['nama_layanan']) ?>
