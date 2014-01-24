@@ -6,7 +6,11 @@
 		echo $this->Form->input('id');
 		echo $this->Form->input('nama');
 		echo $this->Form->input('deskripsi');
+<<<<<<< HEAD
 		echo $this->Form->input('parent_id', array('required' => FALSE));
+=======
+		echo $this->Form->input('parent_id', array('required' => FALSE, 'empty' => '', 'options' =>$parentCategories));
+>>>>>>> 1b704004bef82613b4745b2f47879d99b868d943
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
