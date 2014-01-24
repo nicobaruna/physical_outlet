@@ -3,12 +3,12 @@
 	<fieldset>
 		<legend><?php echo __('Add Submission'); ?></legend>
 	<?php
-		echo $this->Form->input('company_id');
-		echo $this->Form->input('agen_id');
-		echo $this->Form->input('reporter_id');
-		echo $this->Form->input('service_id');
-		echo $this->Form->input('note');
-		echo $this->Form->input('status');
+		echo $this->Form->input('company_id',array('empty'=>'Please choose one'));
+		echo $this->Form->hidden('agen_id',array('value'=>$this->Session->read('Auth.User.agen_id')));
+		echo $this->Form->input('reporter_id',array('empty'=>'please choose one'));
+		echo $this->Form->input('service_id',array('empty'=>'please choose one'));
+		echo $this->Form->input('note',array('type'=>'textarea'));
+		echo $this->Form->input('status',array('empty'=>'please choose one','options'=>array('open','pending','process','closed','done','ilcs pending','customer pending')));
 		echo $this->Form->input('flag');
 	?>
 	</fieldset>

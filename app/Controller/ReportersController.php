@@ -39,6 +39,16 @@ class ReportersController extends AppController {
 		$options = array('conditions' => array('Reporter.' . $this->Reporter->primaryKey => $id));
 		$this->set('reporter', $this->Reporter->find('first', $options));
 	}
+	
+	public function reporterLookUp($key){
+		$names = $this->Reporter->find('all',array('conditions'=>array(
+			'nama LIKE' => '%'.$key.'%'
+		)));
+		$this->set(array(
+			'names' => $names,
+			'_serialize' => array('names')
+		));
+	}
 
 /**
  * add method

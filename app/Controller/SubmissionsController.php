@@ -55,10 +55,10 @@ class SubmissionsController extends AppController {
 				$this->Session->setFlash(__('The submission could not be saved. Please, try again.'));
 			}
 		}
-		$companies = $this->Submission->Company->find('list');
+		$companies = $this->Submission->Company->find('list',array('fields'=>array('id','nama_perusahaan')));
 		$agens = $this->Submission->Agen->find('list');
-		$reporters = $this->Submission->Reporter->find('list');
-		$services = $this->Submission->Service->find('list');
+		$reporters = $this->Submission->Reporter->find('list',array('fields'=>array('id','nama')));
+		$services = $this->Submission->Service->find('list',array('fields'=>array('id','nama_layanan')));
 		$this->set(compact('companies', 'agens', 'reporters', 'services'));
 	}
 
