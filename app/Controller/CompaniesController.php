@@ -82,7 +82,11 @@ class CompaniesController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+<<<<<<< HEAD
 		$this->Company->recursive = 2;
+=======
+		//$this->Company->recursive = 2;
+>>>>>>> e84e7524e208d83193cac61a8ab744431bde3e03
 		if (!$this->Company->exists($id)) {
 			throw new NotFoundException(__('Invalid company'));
 		}
@@ -98,6 +102,28 @@ class CompaniesController extends AppController {
 			$options = array('conditions' => array('Company.' . $this->Company->primaryKey => $id));
 			$this->request->data = $this->Company->find('first', $options);
 		}
+		
+		//get all areas
+		$services = $this->Company->CompanyService->Service->find('list',array('fields'=>array('id','nama_layanan')));
+		//get all services
+		$areas = $this->Company->CompanyArea->Area->find('list',array('fields'=>array('id','nama')));
+		
+		//selected area
+		$selectedArea = $this->getSelected($this->request->data['CompanyArea'] , 'area_id');
+		 
+		
+		//get seleceted services
+		$selectedService = $this->getSelected($this->request->data['CompanyService'] , 'service_id');
+		
+		$this->set(compact('areas','services','selectedArea','selectedService'));
+	}
+
+	function getSelected($data,$idKey){
+		foreach ($data as $key => $value) {
+			$selectedArea[] = $value[$idKey];
+		}
+		
+		return (!empty($selectedArea)) ? $selectedArea : array();
 	}
 
 /**
