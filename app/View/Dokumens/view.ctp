@@ -1,5 +1,5 @@
 <div class="dokumens view">
-<h2><?php echo __('Dokumen'); ?></h2>
+<h2><?php echo __('DokumenS'); ?></h2>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>
