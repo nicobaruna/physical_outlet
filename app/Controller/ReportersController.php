@@ -41,7 +41,11 @@ class ReportersController extends AppController {
 	}
 	
 	public function reporterLookUp($key){
-		$names = $this->Reporter->find('all',array('conditions'=>array(
+		$names = $this->Reporter->find('list',array(
+		'fields' => array(
+			'nama'
+		),
+		'conditions'=>array(
 			'nama LIKE' => '%'.$key.'%'
 		)));
 		$this->set(array(
