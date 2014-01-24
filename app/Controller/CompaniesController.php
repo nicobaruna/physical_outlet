@@ -82,6 +82,7 @@ class CompaniesController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+		$this->Company->recursive = 2;
 		if (!$this->Company->exists($id)) {
 			throw new NotFoundException(__('Invalid company'));
 		}
@@ -95,7 +96,7 @@ class CompaniesController extends AppController {
 			}
 		} else {
 			$options = array('conditions' => array('Company.' . $this->Company->primaryKey => $id));
-			$this->request->data = $this->Company->find('first', $options);			
+			$this->request->data = $this->Company->find('first', $options);
 		}
 	}
 
