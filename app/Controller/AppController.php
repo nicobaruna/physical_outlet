@@ -32,9 +32,10 @@ App::uses('CakeEmail', 'Network/Email');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
-	public $components = array('RequestHandler', 'Session', 'DebugKit.Toolbar', 'Auth' => array('loginRedirect' => array('controller' => 'users', 'action' => 'index'), 'logoutRedirect' => array('controller' => 'pages', 'action' => 'display', 'home')));
+	public $components = array('RequestHandler', 'Session', 'DebugKit.Toolbar', 'Auth' => array('loginRedirect' => array('controller' => 'users', 'action' => 'index'),
+	 'logoutRedirect' => array('controller' => 'users', 'action' => 'login')));
 	public function beforeFilter() {
-		$this -> Auth -> allow('index', 'view');
+		//$this -> Auth -> allow('index', 'view');
 		//$this->response->header('Access-Control-Allow-Origin', '*');
 	}
 	

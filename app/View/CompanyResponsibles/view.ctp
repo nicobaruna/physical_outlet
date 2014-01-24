@@ -21,9 +21,14 @@
 			<?php echo h($companyResponsible['CompanyResponsible']['jabatan']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Ttl'); ?></dt>
+		<dt><?php echo __('Tempat Lahir'); ?></dt>
 		<dd>
-			<?php echo h($companyResponsible['CompanyResponsible']['ttl']); ?>
+			<?php echo h($companyResponsible['CompanyResponsible']['tempat_lahir']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Tanggal Lahir'); ?></dt>
+		<dd>
+			<?php echo h($companyResponsible['CompanyResponsible']['tanggal_lahir']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Alamat'); ?></dt>
@@ -31,9 +36,9 @@
 			<?php echo h($companyResponsible['CompanyResponsible']['alamat']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Telepon'); ?></dt>
+		<dt><?php echo __('No Telepon'); ?></dt>
 		<dd>
-			<?php echo h($companyResponsible['CompanyResponsible']['telepon']); ?>
+			<?php echo h($companyResponsible['CompanyResponsible']['no_telepon']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Email'); ?></dt>
@@ -44,6 +49,11 @@
 		<dt><?php echo __('Tanda Pengenal'); ?></dt>
 		<dd>
 			<?php echo h($companyResponsible['CompanyResponsible']['tanda_pengenal']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Nomor Tanda Pengenal'); ?></dt>
+		<dd>
+			<?php echo h($companyResponsible['CompanyResponsible']['nomor_tanda_pengenal']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Jenis Kelamin'); ?></dt>

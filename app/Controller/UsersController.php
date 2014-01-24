@@ -15,7 +15,7 @@ class UsersController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
-	
+
 	public function beforeFilter() {
 		parent::beforeFilter();
 		// Allow users to register and logout.
@@ -88,33 +88,6 @@ class UsersController extends AppController {
 		}
 	}
 
-
-	public function login() {
-		
-		$this->set('jsIncludes', $this->js);
-		if ($this -> request -> is('post')) {
-			
-			if ($this -> Auth -> login()) {
-				$log = new LogUsersController();
-				$data  = array(
-					'LogUser' => array(
-						'tanggal_log' => date('Y-m-d H:i:s'),
-						'user_id' => $this->Session->read('Auth.User.id')
-					)
-				);
-				var_dump($data);
-				$log->createNew($data);
-				
-				return $this -> redirect($this -> Auth -> redirect());
-			}
-		
-			$this -> Session -> setFlash(__('Invalid username or password, try again'));
-		}
-	}
-
-	public function logout() {
-		return $this -> redirect($this -> Auth -> logout());
-	}
 /**
  * delete method
  *
@@ -134,4 +107,63 @@ class UsersController extends AppController {
 			$this->Session->setFlash(__('The user could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
-	}}
+	}
+
+	public function login() {
+		$this->set('jsIncludes', $this->js);
+		if ($this -> request -> is('post')) {
+			if ($this -> Auth -> login()) {
+				// cek dulu dia ada di agen atau di costumer dengan id nya
+				$agens = $this->User->Agen->findByUserId($this->Session->read('Auth.User.id'));
+				$costumers = $this->User->Customer->findByUserId($this->Session->read('Auth.User.id'));
+
+				$log = new LogUsersController();
+				$data  = array(
+					'LogUser' => array(
+						'tanggal_log' => date('Y-m-d H:i:s'),
+						'user_id' => $this->Session->read('Auth.User.id'),
+						'action' => "Login"
+					)
+				);
+				//var_dump($data);
+				$log->createNew($data);
+
+				// jika dia agen berarti set logagen dan redirect nya ke halaman agen
+				if($agens){
+					// jika agen CSR
+					if($agens['Agen']['level'] == '1'){
+						return $this->redirect(array("controller"=>"users", "action"=>"index"));
+					}
+					// jika agen backroom
+					else if($agens['Agen']['level'] == '2'){
+						
+					}
+					// jika agen manage user
+					else if($agens['Agen']['level'] == '3'){
+						
+					}
+					
+				}else if($costumers){
+					return $this -> redirect(array("controller"=>"customers", "action"=>"index"));
+				}
+			}else{
+				$this -> Session -> setFlash(__('Invalid username or password, try again'));
+			}
+		}
+	}
+
+	public function logout() {
+		// set dulu log Agen nya
+		$log = new LogUsersController();
+				$data  = array(
+					'LogUser' => array(
+						'tanggal_log' => date('Y-m-d H:i:s'),
+						'user_id' => $this->Session->read('Auth.User.id'),
+						'action' => "Logout"
+					)
+				);
+				var_dump($data);
+				$log->createNew($data);		
+		return $this -> redirect($this -> Auth -> logout());
+	}
+}

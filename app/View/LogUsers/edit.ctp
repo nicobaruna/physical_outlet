@@ -3,9 +3,10 @@
 	<fieldset>
 		<legend><?php echo __('Edit Log User'); ?></legend>
 	<?php
+		echo $this->Form->input('id');
 		echo $this->Form->input('user_id');
 		echo $this->Form->input('tanggal_log');
-		echo $this->Form->input('jam_log');
+		echo $this->Form->input('action');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

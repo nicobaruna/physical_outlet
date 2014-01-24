@@ -3,6 +3,7 @@ App::uses('AppModel', 'Model');
 /**
  * Customer Model
  *
+ * @property User $User
  * @property Company $Company
  */
 class Customer extends AppModel {
@@ -13,7 +14,7 @@ class Customer extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'company_id' => array(
+		'user_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -23,29 +24,9 @@ class Customer extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'username' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'password' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'status' => array(
-			'boolean' => array(
-				'rule' => array('boolean'),
+		'company_id' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -63,6 +44,13 @@ class Customer extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
+		'User' => array(
+			'className' => 'User',
+			'foreignKey' => 'user_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
 		'Company' => array(
 			'className' => 'Company',
 			'foreignKey' => 'company_id',

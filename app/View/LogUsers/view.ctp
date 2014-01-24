@@ -1,9 +1,14 @@
 <div class="logUsers view">
 <h2><?php echo __('Log User'); ?></h2>
 	<dl>
+		<dt><?php echo __('Id'); ?></dt>
+		<dd>
+			<?php echo h($logUser['LogUser']['id']); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('User'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($logUser['User']['id'], array('controller' => 'users', 'action' => 'view', $logUser['User']['id'])); ?>
+			<?php echo $this->Html->link($logUser['User']['username'], array('controller' => 'users', 'action' => 'view', $logUser['User']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Tanggal Log'); ?></dt>
@@ -11,9 +16,9 @@
 			<?php echo h($logUser['LogUser']['tanggal_log']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Jam Log'); ?></dt>
+		<dt><?php echo __('Action'); ?></dt>
 		<dd>
-			<?php echo h($logUser['LogUser']['jam_log']); ?>
+			<?php echo h($logUser['LogUser']['action']); ?>
 			&nbsp;
 		</dd>
 	</dl>

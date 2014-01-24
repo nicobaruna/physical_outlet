@@ -16,11 +16,6 @@
 			<?php echo h($company['Company']['npwp']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('No Telepon'); ?></dt>
-		<dd>
-			<?php echo h($company['Company']['no_telepon']); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Alamat'); ?></dt>
 		<dd>
 			<?php echo h($company['Company']['alamat']); ?>
@@ -29,16 +24,6 @@
 		<dt><?php echo __('Email'); ?></dt>
 		<dd>
 			<?php echo h($company['Company']['email']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Bidang Usaha'); ?></dt>
-		<dd>
-			<?php echo h($company['Company']['bidang_usaha']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Group Usaha'); ?></dt>
-		<dd>
-			<?php echo h($company['Company']['group_usaha']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Tingkat Organisasi'); ?></dt>
@@ -51,9 +36,19 @@
 			<?php echo h($company['Company']['alamat_penagihan']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Masa Berlaku Kotrak'); ?></dt>
+		<dt><?php echo __('Masa Berlaku'); ?></dt>
 		<dd>
-			<?php echo h($company['Company']['masa_berlaku_kotrak']); ?>
+			<?php echo h($company['Company']['masa_berlaku']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('No Telepon'); ?></dt>
+		<dd>
+			<?php echo h($company['Company']['no_telepon']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Group Usaha'); ?></dt>
+		<dd>
+			<?php echo h($company['Company']['group_usaha']); ?>
 			&nbsp;
 		</dd>
 	</dl>
@@ -84,11 +79,13 @@
 		<th><?php echo __('Company Id'); ?></th>
 		<th><?php echo __('Nama Pimpinan'); ?></th>
 		<th><?php echo __('Jabatan'); ?></th>
-		<th><?php echo __('Ttl'); ?></th>
+		<th><?php echo __('Tempat Lahir'); ?></th>
+		<th><?php echo __('Tanggal Lahir'); ?></th>
 		<th><?php echo __('Alamat'); ?></th>
-		<th><?php echo __('Telepon'); ?></th>
+		<th><?php echo __('No Telepon'); ?></th>
 		<th><?php echo __('Email'); ?></th>
 		<th><?php echo __('Tanda Pengenal'); ?></th>
+		<th><?php echo __('Nomor Tanda Pengenal'); ?></th>
 		<th><?php echo __('Jenis Kelamin'); ?></th>
 		<th><?php echo __('Agama'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>
@@ -99,11 +96,13 @@
 			<td><?php echo $companyResponsible['company_id']; ?></td>
 			<td><?php echo $companyResponsible['nama_pimpinan']; ?></td>
 			<td><?php echo $companyResponsible['jabatan']; ?></td>
-			<td><?php echo $companyResponsible['ttl']; ?></td>
+			<td><?php echo $companyResponsible['tempat_lahir']; ?></td>
+			<td><?php echo $companyResponsible['tanggal_lahir']; ?></td>
 			<td><?php echo $companyResponsible['alamat']; ?></td>
-			<td><?php echo $companyResponsible['telepon']; ?></td>
+			<td><?php echo $companyResponsible['no_telepon']; ?></td>
 			<td><?php echo $companyResponsible['email']; ?></td>
 			<td><?php echo $companyResponsible['tanda_pengenal']; ?></td>
+			<td><?php echo $companyResponsible['nomor_tanda_pengenal']; ?></td>
 			<td><?php echo $companyResponsible['jenis_kelamin']; ?></td>
 			<td><?php echo $companyResponsible['agama']; ?></td>
 			<td class="actions">
@@ -196,19 +195,15 @@
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
 		<th><?php echo __('Id'); ?></th>
+		<th><?php echo __('User Id'); ?></th>
 		<th><?php echo __('Company Id'); ?></th>
-		<th><?php echo __('Username'); ?></th>
-		<th><?php echo __('Password'); ?></th>
-		<th><?php echo __('Status'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($company['Customer'] as $customer): ?>
 		<tr>
 			<td><?php echo $customer['id']; ?></td>
+			<td><?php echo $customer['user_id']; ?></td>
 			<td><?php echo $customer['company_id']; ?></td>
-			<td><?php echo $customer['username']; ?></td>
-			<td><?php echo $customer['password']; ?></td>
-			<td><?php echo $customer['status']; ?></td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('View'), array('controller' => 'customers', 'action' => 'view', $customer['id'])); ?>
 				<?php echo $this->Html->link(__('Edit'), array('controller' => 'customers', 'action' => 'edit', $customer['id'])); ?>

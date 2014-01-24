@@ -16,6 +16,11 @@
 			<?php echo h($service['Service']['deskripsi_layanan']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Parent Service'); ?></dt>
+		<dd>
+			<?php echo $this->Html->link($service['ParentService']['id'], array('controller' => 'services', 'action' => 'view', $service['ParentService']['id'])); ?>
+			&nbsp;
+		</dd>
 	</dl>
 </div>
 <div class="actions">
@@ -25,51 +30,33 @@
 		<li><?php echo $this->Form->postLink(__('Delete Service'), array('action' => 'delete', $service['Service']['id']), null, __('Are you sure you want to delete # %s?', $service['Service']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Services'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Service'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Issues'), array('controller' => 'issues', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Issue'), array('controller' => 'issues', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Services'), array('controller' => 'services', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Parent Service'), array('controller' => 'services', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Submissions'), array('controller' => 'submissions', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Submission'), array('controller' => 'submissions', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
 <div class="related">
-	<h3><?php echo __('Related Issues'); ?></h3>
-	<?php if (!empty($service['Issue'])): ?>
+	<h3><?php echo __('Related Services'); ?></h3>
+	<?php if (!empty($service['ChildService'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
 		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('Service Id'); ?></th>
-		<th><?php echo __('Company Id'); ?></th>
-		<th><?php echo __('Nama Pelapor'); ?></th>
-		<th><?php echo __('Telepon'); ?></th>
-		<th><?php echo __('Email'); ?></th>
-		<th><?php echo __('Deskripsi'); ?></th>
-		<th><?php echo __('Link Gambar'); ?></th>
-		<th><?php echo __('Tanggal Open'); ?></th>
-		<th><?php echo __('Jam Open'); ?></th>
-		<th><?php echo __('Tanggal Close'); ?></th>
-		<th><?php echo __('Jam Close'); ?></th>
-		<th><?php echo __('Status'); ?></th>
-		<th><?php echo __('Counter'); ?></th>
+		<th><?php echo __('Nama Layanan'); ?></th>
+		<th><?php echo __('Deskripsi Layanan'); ?></th>
+		<th><?php echo __('Parent Id'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
-	<?php foreach ($service['Issue'] as $issue): ?>
+	<?php foreach ($service['ChildService'] as $childService): ?>
 		<tr>
-			<td><?php echo $issue['id']; ?></td>
-			<td><?php echo $issue['service_id']; ?></td>
-			<td><?php echo $issue['company_id']; ?></td>
-			<td><?php echo $issue['nama_pelapor']; ?></td>
-			<td><?php echo $issue['telepon']; ?></td>
-			<td><?php echo $issue['email']; ?></td>
-			<td><?php echo $issue['deskripsi']; ?></td>
-			<td><?php echo $issue['link_gambar']; ?></td>
-			<td><?php echo $issue['tanggal_open']; ?></td>
-			<td><?php echo $issue['jam_open']; ?></td>
-			<td><?php echo $issue['tanggal_close']; ?></td>
-			<td><?php echo $issue['jam_close']; ?></td>
-			<td><?php echo $issue['status']; ?></td>
-			<td><?php echo $issue['counter']; ?></td>
+			<td><?php echo $childService['id']; ?></td>
+			<td><?php echo $childService['nama_layanan']; ?></td>
+			<td><?php echo $childService['deskripsi_layanan']; ?></td>
+			<td><?php echo $childService['parent_id']; ?></td>
 			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'issues', 'action' => 'view', $issue['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'issues', 'action' => 'edit', $issue['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'issues', 'action' => 'delete', $issue['id']), null, __('Are you sure you want to delete # %s?', $issue['id'])); ?>
+				<?php echo $this->Html->link(__('View'), array('controller' => 'services', 'action' => 'view', $childService['id'])); ?>
+				<?php echo $this->Html->link(__('Edit'), array('controller' => 'services', 'action' => 'edit', $childService['id'])); ?>
+				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'services', 'action' => 'delete', $childService['id']), null, __('Are you sure you want to delete # %s?', $childService['id'])); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>
@@ -78,7 +65,48 @@
 
 	<div class="actions">
 		<ul>
-			<li><?php echo $this->Html->link(__('New Issue'), array('controller' => 'issues', 'action' => 'add')); ?> </li>
+			<li><?php echo $this->Html->link(__('New Child Service'), array('controller' => 'services', 'action' => 'add')); ?> </li>
+		</ul>
+	</div>
+</div>
+<div class="related">
+	<h3><?php echo __('Related Submissions'); ?></h3>
+	<?php if (!empty($service['Submission'])): ?>
+	<table cellpadding = "0" cellspacing = "0">
+	<tr>
+		<th><?php echo __('Id'); ?></th>
+		<th><?php echo __('Company Id'); ?></th>
+		<th><?php echo __('Agen Id'); ?></th>
+		<th><?php echo __('Reporter Id'); ?></th>
+		<th><?php echo __('Service Id'); ?></th>
+		<th><?php echo __('Note'); ?></th>
+		<th><?php echo __('Status'); ?></th>
+		<th><?php echo __('Flag'); ?></th>
+		<th class="actions"><?php echo __('Actions'); ?></th>
+	</tr>
+	<?php foreach ($service['Submission'] as $submission): ?>
+		<tr>
+			<td><?php echo $submission['id']; ?></td>
+			<td><?php echo $submission['company_id']; ?></td>
+			<td><?php echo $submission['agen_id']; ?></td>
+			<td><?php echo $submission['reporter_id']; ?></td>
+			<td><?php echo $submission['service_id']; ?></td>
+			<td><?php echo $submission['note']; ?></td>
+			<td><?php echo $submission['status']; ?></td>
+			<td><?php echo $submission['flag']; ?></td>
+			<td class="actions">
+				<?php echo $this->Html->link(__('View'), array('controller' => 'submissions', 'action' => 'view', $submission['id'])); ?>
+				<?php echo $this->Html->link(__('Edit'), array('controller' => 'submissions', 'action' => 'edit', $submission['id'])); ?>
+				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'submissions', 'action' => 'delete', $submission['id']), null, __('Are you sure you want to delete # %s?', $submission['id'])); ?>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+	</table>
+<?php endif; ?>
+
+	<div class="actions">
+		<ul>
+			<li><?php echo $this->Html->link(__('New Submission'), array('controller' => 'submissions', 'action' => 'add')); ?> </li>
 		</ul>
 	</div>
 </div>

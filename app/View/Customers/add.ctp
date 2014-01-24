@@ -3,10 +3,8 @@
 	<fieldset>
 		<legend><?php echo __('Add Customer'); ?></legend>
 	<?php
+		echo $this->Form->input('user_id');
 		echo $this->Form->input('company_id');
-		echo $this->Form->input('username');
-		echo $this->Form->input('password');
-		echo $this->Form->input('status');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

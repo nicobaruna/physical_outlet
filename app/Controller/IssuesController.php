@@ -55,8 +55,11 @@ class IssuesController extends AppController {
 				$this->Session->setFlash(__('The issue could not be saved. Please, try again.'));
 			}
 		}
-		$services = $this->Issue->Service->find('list');
-		$this->set(compact('services'));
+		$companies = $this->Issue->Company->find('list');
+		$agens = $this->Issue->Agen->find('list');
+		$reporters = $this->Issue->Reporter->find('list');
+		$categories = $this->Issue->Category->find('list');
+		$this->set(compact('companies', 'agens', 'reporters', 'categories'));
 	}
 
 /**
@@ -81,8 +84,11 @@ class IssuesController extends AppController {
 			$options = array('conditions' => array('Issue.' . $this->Issue->primaryKey => $id));
 			$this->request->data = $this->Issue->find('first', $options);
 		}
-		$services = $this->Issue->Service->find('list');
-		$this->set(compact('services'));
+		$companies = $this->Issue->Company->find('list');
+		$agens = $this->Issue->Agen->find('list');
+		$reporters = $this->Issue->Reporter->find('list');
+		$categories = $this->Issue->Category->find('list');
+		$this->set(compact('companies', 'agens', 'reporters', 'categories'));
 	}
 
 /**

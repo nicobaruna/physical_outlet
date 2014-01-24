@@ -5,14 +5,13 @@
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('nama_perusahaan'); ?></th>
 			<th><?php echo $this->Paginator->sort('npwp'); ?></th>
-			<th><?php echo $this->Paginator->sort('no_telepon'); ?></th>
 			<th><?php echo $this->Paginator->sort('alamat'); ?></th>
 			<th><?php echo $this->Paginator->sort('email'); ?></th>
-			<th><?php echo $this->Paginator->sort('bidang_usaha'); ?></th>
-			<th><?php echo $this->Paginator->sort('group_usaha'); ?></th>
 			<th><?php echo $this->Paginator->sort('tingkat_organisasi'); ?></th>
 			<th><?php echo $this->Paginator->sort('alamat_penagihan'); ?></th>
-			<th><?php echo $this->Paginator->sort('masa_berlaku_kotrak'); ?></th>
+			<th><?php echo $this->Paginator->sort('masa_berlaku'); ?></th>
+			<th><?php echo $this->Paginator->sort('no_telepon'); ?></th>
+			<th><?php echo $this->Paginator->sort('group_usaha'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($companies as $company): ?>
@@ -20,14 +19,13 @@
 		<td><?php echo h($company['Company']['id']); ?>&nbsp;</td>
 		<td><?php echo h($company['Company']['nama_perusahaan']); ?>&nbsp;</td>
 		<td><?php echo h($company['Company']['npwp']); ?>&nbsp;</td>
-		<td><?php echo h($company['Company']['no_telepon']); ?>&nbsp;</td>
 		<td><?php echo h($company['Company']['alamat']); ?>&nbsp;</td>
 		<td><?php echo h($company['Company']['email']); ?>&nbsp;</td>
-		<td><?php echo h($company['Company']['bidang_usaha']); ?>&nbsp;</td>
-		<td><?php echo h($company['Company']['group_usaha']); ?>&nbsp;</td>
 		<td><?php echo h($company['Company']['tingkat_organisasi']); ?>&nbsp;</td>
 		<td><?php echo h($company['Company']['alamat_penagihan']); ?>&nbsp;</td>
-		<td><?php echo h($company['Company']['masa_berlaku_kotrak']); ?>&nbsp;</td>
+		<td><?php echo h($company['Company']['masa_berlaku']); ?>&nbsp;</td>
+		<td><?php echo h($company['Company']['no_telepon']); ?>&nbsp;</td>
+		<td><?php echo h($company['Company']['group_usaha']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $company['Company']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $company['Company']['id'])); ?>

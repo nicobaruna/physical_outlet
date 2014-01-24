@@ -3,8 +3,9 @@ App::uses('AppModel', 'Model');
 /**
  * Service Model
  *
- * @property Issue $Issue
- * @property ServiceSub $ServiceSub
+ * @property Service $ParentService
+ * @property Service $ChildService
+ * @property Submission $Submission
  */
 class Service extends AppModel {
 
@@ -39,14 +40,29 @@ class Service extends AppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 /**
+ * belongsTo associations
+ *
+ * @var array
+ */
+	public $belongsTo = array(
+		'ParentService' => array(
+			'className' => 'Service',
+			'foreignKey' => 'parent_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
+	);
+
+/**
  * hasMany associations
  *
  * @var array
  */
 	public $hasMany = array(
-		'Issue' => array(
-			'className' => 'Issue',
-			'foreignKey' => 'service_id',
+		'ChildService' => array(
+			'className' => 'Service',
+			'foreignKey' => 'parent_id',
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
@@ -57,8 +73,8 @@ class Service extends AppModel {
 			'finderQuery' => '',
 			'counterQuery' => ''
 		),
-		'ServiceSub' => array(
-			'className' => 'ServiceSub',
+		'Submission' => array(
+			'className' => 'Submission',
 			'foreignKey' => 'service_id',
 			'dependent' => false,
 			'conditions' => '',

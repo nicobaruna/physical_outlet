@@ -5,11 +5,7 @@
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('username'); ?></th>
 			<th><?php echo $this->Paginator->sort('password'); ?></th>
-			<th><?php echo $this->Paginator->sort('nama'); ?></th>
-			<th><?php echo $this->Paginator->sort('nik'); ?></th>
-			<th><?php echo $this->Paginator->sort('level'); ?></th>
 			<th><?php echo $this->Paginator->sort('status'); ?></th>
-			<th><?php echo $this->Paginator->sort('email'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($users as $user): ?>
@@ -17,11 +13,7 @@
 		<td><?php echo h($user['User']['id']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['username']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['password']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['nama']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['nik']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['level']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['status']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['email']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $user['User']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $user['User']['id'])); ?>
@@ -48,7 +40,9 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('New User'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Rekapitulations'), array('controller' => 'rekapitulations', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Rekapitulation'), array('controller' => 'rekapitulations', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Registration'), array('controller' => 'companies','action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('Complain Handling'), array('controller' => 'issues','action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('Filling Service'), array('controller' => 'submissions','action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('Logout'), array('controller'=>'users','action' => 'logout')); ?></li>
 	</ul>
 </div>

@@ -6,11 +6,13 @@
 		echo $this->Form->input('company_id');
 		echo $this->Form->input('nama_pimpinan');
 		echo $this->Form->input('jabatan');
-		echo $this->Form->input('ttl');
+		echo $this->Form->input('tempat_lahir');
+		echo $this->Form->input('tanggal_lahir');
 		echo $this->Form->input('alamat');
-		echo $this->Form->input('telepon');
+		echo $this->Form->input('no_telepon');
 		echo $this->Form->input('email');
 		echo $this->Form->input('tanda_pengenal');
+		echo $this->Form->input('nomor_tanda_pengenal');
 		echo $this->Form->input('jenis_kelamin');
 		echo $this->Form->input('agama');
 	?>

@@ -3,21 +3,17 @@
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
+			<th><?php echo $this->Paginator->sort('user_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('company_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('username'); ?></th>
-			<th><?php echo $this->Paginator->sort('password'); ?></th>
-			<th><?php echo $this->Paginator->sort('status'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($customers as $customer): ?>
 	<tr>
 		<td><?php echo h($customer['Customer']['id']); ?>&nbsp;</td>
+		<td><?php echo h($customer['Customer']['user_id']); ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($customer['Company']['id'], array('controller' => 'companies', 'action' => 'view', $customer['Company']['id'])); ?>
 		</td>
-		<td><?php echo h($customer['Customer']['username']); ?>&nbsp;</td>
-		<td><?php echo h($customer['Customer']['password']); ?>&nbsp;</td>
-		<td><?php echo h($customer['Customer']['status']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $customer['Customer']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $customer['Customer']['id'])); ?>
@@ -46,5 +42,7 @@
 		<li><?php echo $this->Html->link(__('New Customer'), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('List Companies'), array('controller' => 'companies', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Company'), array('controller' => 'companies', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Filling Service'), array('controller' => 'submissions','action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('Logout'), array('controller'=>'users','action' => 'logout')); ?></li>
 	</ul>
 </div>

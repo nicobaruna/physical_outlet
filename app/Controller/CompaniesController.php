@@ -48,22 +48,13 @@ class CompaniesController extends AppController {
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->Company->create();
-			foreach ($this->request->data['CompanyService'] as $key=>$value) {
-				if($value['service_id'] == 0){
-					unset($this->request->data['CompanyService'][$key]);
-				}
-			}
-			var_dump($this->request->data);
-			if ($this->Company->saveAssociated($this->request->data,array('deep'=>TRUE))) {
+			if ($this->Company->save($this->request->data)) {
 				$this->Session->setFlash(__('The company has been saved.'));
-
 				return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The company could not be saved. Please, try again.'));
 			}
 		}
-		$services = $this->Company->CompanyService->Service->find('all');
-		$this->set(compact('services'));
 	}
 
 /**
@@ -88,8 +79,6 @@ class CompaniesController extends AppController {
 			$options = array('conditions' => array('Company.' . $this->Company->primaryKey => $id));
 			$this->request->data = $this->Company->find('first', $options);
 		}
-		$services = $this->Company->CompanyService->Service->find('all');
-		$this->set(compact('services'));
 	}
 
 /**

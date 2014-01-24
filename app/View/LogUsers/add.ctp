@@ -5,7 +5,7 @@
 	<?php
 		echo $this->Form->input('user_id');
 		echo $this->Form->input('tanggal_log');
-		echo $this->Form->input('jam_log');
+		echo $this->Form->input('action');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

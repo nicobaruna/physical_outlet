@@ -43,7 +43,7 @@ class CompanyResponsible extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'nomor_tanda_pengenal' => array(
+		'tempat_lahir' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',
@@ -53,7 +53,7 @@ class CompanyResponsible extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'ttl' => array(
+		'tanggal_lahir' => array(
 			'date' => array(
 				'rule' => array('date'),
 				//'message' => 'Your custom message here',
@@ -73,7 +73,7 @@ class CompanyResponsible extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'telepon' => array(
+		'no_telepon' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',
@@ -94,6 +94,16 @@ class CompanyResponsible extends AppModel {
 			),
 		),
 		'tanda_pengenal' => array(
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'nomor_tanda_pengenal' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',

@@ -6,11 +6,13 @@
 			<th><?php echo $this->Paginator->sort('company_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('nama_pimpinan'); ?></th>
 			<th><?php echo $this->Paginator->sort('jabatan'); ?></th>
-			<th><?php echo $this->Paginator->sort('ttl'); ?></th>
+			<th><?php echo $this->Paginator->sort('tempat_lahir'); ?></th>
+			<th><?php echo $this->Paginator->sort('tanggal_lahir'); ?></th>
 			<th><?php echo $this->Paginator->sort('alamat'); ?></th>
-			<th><?php echo $this->Paginator->sort('telepon'); ?></th>
+			<th><?php echo $this->Paginator->sort('no_telepon'); ?></th>
 			<th><?php echo $this->Paginator->sort('email'); ?></th>
 			<th><?php echo $this->Paginator->sort('tanda_pengenal'); ?></th>
+			<th><?php echo $this->Paginator->sort('nomor_tanda_pengenal'); ?></th>
 			<th><?php echo $this->Paginator->sort('jenis_kelamin'); ?></th>
 			<th><?php echo $this->Paginator->sort('agama'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
@@ -23,11 +25,13 @@
 		</td>
 		<td><?php echo h($companyResponsible['CompanyResponsible']['nama_pimpinan']); ?>&nbsp;</td>
 		<td><?php echo h($companyResponsible['CompanyResponsible']['jabatan']); ?>&nbsp;</td>
-		<td><?php echo h($companyResponsible['CompanyResponsible']['ttl']); ?>&nbsp;</td>
+		<td><?php echo h($companyResponsible['CompanyResponsible']['tempat_lahir']); ?>&nbsp;</td>
+		<td><?php echo h($companyResponsible['CompanyResponsible']['tanggal_lahir']); ?>&nbsp;</td>
 		<td><?php echo h($companyResponsible['CompanyResponsible']['alamat']); ?>&nbsp;</td>
-		<td><?php echo h($companyResponsible['CompanyResponsible']['telepon']); ?>&nbsp;</td>
+		<td><?php echo h($companyResponsible['CompanyResponsible']['no_telepon']); ?>&nbsp;</td>
 		<td><?php echo h($companyResponsible['CompanyResponsible']['email']); ?>&nbsp;</td>
 		<td><?php echo h($companyResponsible['CompanyResponsible']['tanda_pengenal']); ?>&nbsp;</td>
+		<td><?php echo h($companyResponsible['CompanyResponsible']['nomor_tanda_pengenal']); ?>&nbsp;</td>
 		<td><?php echo h($companyResponsible['CompanyResponsible']['jenis_kelamin']); ?>&nbsp;</td>
 		<td><?php echo h($companyResponsible['CompanyResponsible']['agama']); ?>&nbsp;</td>
 		<td class="actions">

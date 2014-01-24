@@ -2,18 +2,20 @@
 	<h2><?php echo __('Log Users'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
+			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('user_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('tanggal_log'); ?></th>
-			<th><?php echo $this->Paginator->sort('jam_log'); ?></th>
+			<th><?php echo $this->Paginator->sort('action'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($logUsers as $logUser): ?>
 	<tr>
+		<td><?php echo h($logUser['LogUser']['id']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($logUser['User']['id'], array('controller' => 'users', 'action' => 'view', $logUser['User']['id'])); ?>
+			<?php echo $this->Html->link($logUser['User']['username'], array('controller' => 'users', 'action' => 'view', $logUser['User']['id'])); ?>
 		</td>
 		<td><?php echo h($logUser['LogUser']['tanggal_log']); ?>&nbsp;</td>
-		<td><?php echo h($logUser['LogUser']['jam_log']); ?>&nbsp;</td>
+		<td><?php echo h($logUser['LogUser']['action']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $logUser['LogUser']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $logUser['LogUser']['id'])); ?>

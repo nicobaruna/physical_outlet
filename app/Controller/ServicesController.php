@@ -55,6 +55,14 @@ class ServicesController extends AppController {
 				$this->Session->setFlash(__('The service could not be saved. Please, try again.'));
 			}
 		}
+		// ambil semua tapi yang parent id nya kosong
+		$without_parent_id = array('conditions'=> array('Service.parent_id' => NULL));
+		$parent_id_all = $this->Service->find('all',$without_parent_id);
+		// foreach dengan tambahan bahwa ada parent_id yang null
+		foreach ($parent_id_all as $key => $value) {
+			$parent_id[$value['Service']['id']] = $value['Service']['nama_layanan'];
+		}
+		$this->set(compact('parent_id'));
 	}
 
 /**
@@ -79,6 +87,13 @@ class ServicesController extends AppController {
 			$options = array('conditions' => array('Service.' . $this->Service->primaryKey => $id));
 			$this->request->data = $this->Service->find('first', $options);
 		}
+		$without_parent_id = array('conditions'=> array('Service.parent_id' => NULL));
+		$parent_id_all = $this->Service->find('all',$without_parent_id);
+		// foreach dengan tambahan bahwa ada parent_id yang null
+		foreach ($parent_id_all as $key => $value) {
+			$parent_id[$value['Service']['id']] = $value['Service']['nama_layanan'];
+		}
+		$this->set(compact('parent_id'));
 	}
 
 /**

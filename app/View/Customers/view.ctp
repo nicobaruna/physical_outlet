@@ -6,24 +6,14 @@
 			<?php echo h($customer['Customer']['id']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('User Id'); ?></dt>
+		<dd>
+			<?php echo h($customer['Customer']['user_id']); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Company'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($customer['Company']['id'], array('controller' => 'companies', 'action' => 'view', $customer['Company']['id'])); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Username'); ?></dt>
-		<dd>
-			<?php echo h($customer['Customer']['username']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Password'); ?></dt>
-		<dd>
-			<?php echo h($customer['Customer']['password']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Status'); ?></dt>
-		<dd>
-			<?php echo h($customer['Customer']['status']); ?>
 			&nbsp;
 		</dd>
 	</dl>

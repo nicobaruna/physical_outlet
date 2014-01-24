@@ -5,11 +5,7 @@
 	<?php
 		echo $this->Form->input('username');
 		echo $this->Form->input('password');
-		echo $this->Form->input('nama');
-		echo $this->Form->input('nik');
-		echo $this->Form->input('level');
 		echo $this->Form->input('status');
-		echo $this->Form->input('email');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
@@ -19,7 +15,5 @@
 	<ul>
 
 		<li><?php echo $this->Html->link(__('List Users'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Rekapitulations'), array('controller' => 'rekapitulations', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Rekapitulation'), array('controller' => 'rekapitulations', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

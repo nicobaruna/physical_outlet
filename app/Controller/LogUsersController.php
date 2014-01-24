@@ -58,19 +58,6 @@ class LogUsersController extends AppController {
 		$users = $this->LogUser->User->find('list');
 		$this->set(compact('users'));
 	}
-	
-	public function createNew($data) {
-		if (!empty($data)) {
-			$this->LogUser->create();
-			if ($this->LogUser->save($data)) {
-				//$this->Session->setFlash(__('The log user has been saved.'));
-				//return $this->redirect(array('action' => 'index'));
-			} else {
-				//echo "gagal son"; exit;
-			}
-		}
-		
-	}
 
 /**
  * edit method
@@ -117,4 +104,16 @@ class LogUsersController extends AppController {
 			$this->Session->setFlash(__('The log user could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
-	}}
+	}
+	public function createNew($data) {
+		if (!empty($data)) {
+			$this->LogUser->create();
+			if ($this->LogUser->save($data)) {
+				//$this->Session->setFlash(__('The log user has been saved.'));
+				//return $this->redirect(array('action' => 'index'));
+			} else {
+				//echo "gagal son"; exit;
+			}
+		}
+	}
+}

@@ -6,34 +6,34 @@
 			<?php echo h($issue['Issue']['id']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Service'); ?></dt>
+		<dt><?php echo __('Company'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($issue['Service']['id'], array('controller' => 'services', 'action' => 'view', $issue['Service']['id'])); ?>
+			<?php echo $this->Html->link($issue['Company']['id'], array('controller' => 'companies', 'action' => 'view', $issue['Company']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Company Id'); ?></dt>
+		<dt><?php echo __('Agen'); ?></dt>
 		<dd>
-			<?php echo h($issue['Issue']['company_id']); ?>
+			<?php echo $this->Html->link($issue['Agen']['id'], array('controller' => 'agens', 'action' => 'view', $issue['Agen']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Nama Pelapor'); ?></dt>
+		<dt><?php echo __('Reporter'); ?></dt>
 		<dd>
-			<?php echo h($issue['Issue']['nama_pelapor']); ?>
+			<?php echo $this->Html->link($issue['Reporter']['id'], array('controller' => 'reporters', 'action' => 'view', $issue['Reporter']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Telepon'); ?></dt>
+		<dt><?php echo __('Category'); ?></dt>
 		<dd>
-			<?php echo h($issue['Issue']['telepon']); ?>
+			<?php echo $this->Html->link($issue['Category']['id'], array('controller' => 'categories', 'action' => 'view', $issue['Category']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Email'); ?></dt>
+		<dt><?php echo __('No Resi'); ?></dt>
 		<dd>
-			<?php echo h($issue['Issue']['email']); ?>
+			<?php echo h($issue['Issue']['no_resi']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Deskripsi'); ?></dt>
+		<dt><?php echo __('Note'); ?></dt>
 		<dd>
-			<?php echo h($issue['Issue']['deskripsi']); ?>
+			<?php echo h($issue['Issue']['note']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Link Gambar'); ?></dt>
@@ -41,24 +41,9 @@
 			<?php echo h($issue['Issue']['link_gambar']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Tanggal Open'); ?></dt>
+		<dt><?php echo __('Tanggal'); ?></dt>
 		<dd>
-			<?php echo h($issue['Issue']['tanggal_open']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Jam Open'); ?></dt>
-		<dd>
-			<?php echo h($issue['Issue']['jam_open']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Tanggal Close'); ?></dt>
-		<dd>
-			<?php echo h($issue['Issue']['tanggal_close']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Jam Close'); ?></dt>
-		<dd>
-			<?php echo h($issue['Issue']['jam_close']); ?>
+			<?php echo h($issue['Issue']['tanggal']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Status'); ?></dt>
@@ -66,9 +51,9 @@
 			<?php echo h($issue['Issue']['status']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Counter'); ?></dt>
+		<dt><?php echo __('Flag'); ?></dt>
 		<dd>
-			<?php echo h($issue['Issue']['counter']); ?>
+			<?php echo h($issue['Issue']['flag']); ?>
 			&nbsp;
 		</dd>
 	</dl>
@@ -80,46 +65,13 @@
 		<li><?php echo $this->Form->postLink(__('Delete Issue'), array('action' => 'delete', $issue['Issue']['id']), null, __('Are you sure you want to delete # %s?', $issue['Issue']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Issues'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Issue'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Services'), array('controller' => 'services', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Service'), array('controller' => 'services', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Issue Histories'), array('controller' => 'issue_histories', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Issue History'), array('controller' => 'issue_histories', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Companies'), array('controller' => 'companies', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Company'), array('controller' => 'companies', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Agens'), array('controller' => 'agens', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Agen'), array('controller' => 'agens', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Reporters'), array('controller' => 'reporters', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Reporter'), array('controller' => 'reporters', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Categories'), array('controller' => 'categories', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Category'), array('controller' => 'categories', 'action' => 'add')); ?> </li>
 	</ul>
-</div>
-<div class="related">
-	<h3><?php echo __('Related Issue Histories'); ?></h3>
-	<?php if (!empty($issue['IssueHistory'])): ?>
-	<table cellpadding = "0" cellspacing = "0">
-	<tr>
-		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('Issue Id'); ?></th>
-		<th><?php echo __('User Id'); ?></th>
-		<th><?php echo __('Tanggal'); ?></th>
-		<th><?php echo __('Status'); ?></th>
-		<th><?php echo __('Comment'); ?></th>
-		<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	<?php foreach ($issue['IssueHistory'] as $issueHistory): ?>
-		<tr>
-			<td><?php echo $issueHistory['id']; ?></td>
-			<td><?php echo $issueHistory['issue_id']; ?></td>
-			<td><?php echo $issueHistory['user_id']; ?></td>
-			<td><?php echo $issueHistory['tanggal']; ?></td>
-			<td><?php echo $issueHistory['status']; ?></td>
-			<td><?php echo $issueHistory['comment']; ?></td>
-			<td class="actions">
-				<?php echo $this->Html->link(__('View'), array('controller' => 'issue_histories', 'action' => 'view', $issueHistory['id'])); ?>
-				<?php echo $this->Html->link(__('Edit'), array('controller' => 'issue_histories', 'action' => 'edit', $issueHistory['id'])); ?>
-				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'issue_histories', 'action' => 'delete', $issueHistory['id']), null, __('Are you sure you want to delete # %s?', $issueHistory['id'])); ?>
-			</td>
-		</tr>
-	<?php endforeach; ?>
-	</table>
-<?php endif; ?>
-
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Issue History'), array('controller' => 'issue_histories', 'action' => 'add')); ?> </li>
-		</ul>
-	</div>
 </div>
