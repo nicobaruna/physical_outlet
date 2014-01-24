@@ -4,6 +4,7 @@ App::uses('AppModel', 'Model');
  * CompanyArea Model
  *
  * @property Company $Company
+ * @property Area $Area
  */
 class CompanyArea extends AppModel {
 
@@ -23,7 +24,7 @@ class CompanyArea extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'nama' => array(
+		'area_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -46,6 +47,13 @@ class CompanyArea extends AppModel {
 		'Company' => array(
 			'className' => 'Company',
 			'foreignKey' => 'company_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
+		'Area' => array(
+			'className' => 'Area',
+			'foreignKey' => 'area_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

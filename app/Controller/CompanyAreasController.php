@@ -56,7 +56,8 @@ class CompanyAreasController extends AppController {
 			}
 		}
 		$companies = $this->CompanyArea->Company->find('list');
-		$this->set(compact('companies'));
+		$areas = $this->CompanyArea->Area->find('list');
+		$this->set(compact('companies', 'areas'));
 	}
 
 /**
@@ -82,7 +83,8 @@ class CompanyAreasController extends AppController {
 			$this->request->data = $this->CompanyArea->find('first', $options);
 		}
 		$companies = $this->CompanyArea->Company->find('list');
-		$this->set(compact('companies'));
+		$areas = $this->CompanyArea->Area->find('list');
+		$this->set(compact('companies', 'areas'));
 	}
 
 /**

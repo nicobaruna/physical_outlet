@@ -4,7 +4,7 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('company_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('nama'); ?></th>
+			<th><?php echo $this->Paginator->sort('area_id'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($companyAreas as $companyArea): ?>
@@ -13,7 +13,9 @@
 		<td>
 			<?php echo $this->Html->link($companyArea['Company']['id'], array('controller' => 'companies', 'action' => 'view', $companyArea['Company']['id'])); ?>
 		</td>
-		<td><?php echo h($companyArea['CompanyArea']['nama']); ?>&nbsp;</td>
+		<td>
+			<?php echo $this->Html->link($companyArea['Area']['id'], array('controller' => 'areas', 'action' => 'view', $companyArea['Area']['id'])); ?>
+		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $companyArea['CompanyArea']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $companyArea['CompanyArea']['id'])); ?>
@@ -42,5 +44,7 @@
 		<li><?php echo $this->Html->link(__('New Company Area'), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('List Companies'), array('controller' => 'companies', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Company'), array('controller' => 'companies', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Areas'), array('controller' => 'areas', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Area'), array('controller' => 'areas', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

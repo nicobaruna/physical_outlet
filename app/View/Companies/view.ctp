@@ -60,6 +60,8 @@
 		<li><?php echo $this->Form->postLink(__('Delete Company'), array('action' => 'delete', $company['Company']['id']), null, __('Are you sure you want to delete # %s?', $company['Company']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Companies'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Company'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Company Areas'), array('controller' => 'company_areas', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Company Area'), array('controller' => 'company_areas', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Company Responsibles'), array('controller' => 'company_responsibles', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Company Responsible'), array('controller' => 'company_responsibles', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Company Services'), array('controller' => 'company_services', 'action' => 'index')); ?> </li>
@@ -68,7 +70,42 @@
 		<li><?php echo $this->Html->link(__('New Company Staff'), array('controller' => 'company_staffs', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Customers'), array('controller' => 'customers', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Customer'), array('controller' => 'customers', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Issues'), array('controller' => 'issues', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Issue'), array('controller' => 'issues', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Submissions'), array('controller' => 'submissions', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Submission'), array('controller' => 'submissions', 'action' => 'add')); ?> </li>
 	</ul>
+</div>
+<div class="related">
+	<h3><?php echo __('Related Company Areas'); ?></h3>
+	<?php if (!empty($company['CompanyArea'])): ?>
+	<table cellpadding = "0" cellspacing = "0">
+	<tr>
+		<th><?php echo __('Id'); ?></th>
+		<th><?php echo __('Company Id'); ?></th>
+		<th><?php echo __('Area Id'); ?></th>
+		<th class="actions"><?php echo __('Actions'); ?></th>
+	</tr>
+	<?php foreach ($company['CompanyArea'] as $companyArea): ?>
+		<tr>
+			<td><?php echo $companyArea['id']; ?></td>
+			<td><?php echo $companyArea['company_id']; ?></td>
+			<td><?php echo $companyArea['area_id']; ?></td>
+			<td class="actions">
+				<?php echo $this->Html->link(__('View'), array('controller' => 'company_areas', 'action' => 'view', $companyArea['id'])); ?>
+				<?php echo $this->Html->link(__('Edit'), array('controller' => 'company_areas', 'action' => 'edit', $companyArea['id'])); ?>
+				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'company_areas', 'action' => 'delete', $companyArea['id']), null, __('Are you sure you want to delete # %s?', $companyArea['id'])); ?>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+	</table>
+<?php endif; ?>
+
+	<div class="actions">
+		<ul>
+			<li><?php echo $this->Html->link(__('New Company Area'), array('controller' => 'company_areas', 'action' => 'add')); ?> </li>
+		</ul>
+	</div>
 </div>
 <div class="related">
 	<h3><?php echo __('Related Company Responsibles'); ?></h3>
@@ -217,6 +254,94 @@
 	<div class="actions">
 		<ul>
 			<li><?php echo $this->Html->link(__('New Customer'), array('controller' => 'customers', 'action' => 'add')); ?> </li>
+		</ul>
+	</div>
+</div>
+<div class="related">
+	<h3><?php echo __('Related Issues'); ?></h3>
+	<?php if (!empty($company['Issue'])): ?>
+	<table cellpadding = "0" cellspacing = "0">
+	<tr>
+		<th><?php echo __('Id'); ?></th>
+		<th><?php echo __('Company Id'); ?></th>
+		<th><?php echo __('Agen Id'); ?></th>
+		<th><?php echo __('Reporter Id'); ?></th>
+		<th><?php echo __('Category Id'); ?></th>
+		<th><?php echo __('No Resi'); ?></th>
+		<th><?php echo __('Note'); ?></th>
+		<th><?php echo __('Link Gambar'); ?></th>
+		<th><?php echo __('Tanggal'); ?></th>
+		<th><?php echo __('Status'); ?></th>
+		<th><?php echo __('Flag'); ?></th>
+		<th class="actions"><?php echo __('Actions'); ?></th>
+	</tr>
+	<?php foreach ($company['Issue'] as $issue): ?>
+		<tr>
+			<td><?php echo $issue['id']; ?></td>
+			<td><?php echo $issue['company_id']; ?></td>
+			<td><?php echo $issue['agen_id']; ?></td>
+			<td><?php echo $issue['reporter_id']; ?></td>
+			<td><?php echo $issue['category_id']; ?></td>
+			<td><?php echo $issue['no_resi']; ?></td>
+			<td><?php echo $issue['note']; ?></td>
+			<td><?php echo $issue['link_gambar']; ?></td>
+			<td><?php echo $issue['tanggal']; ?></td>
+			<td><?php echo $issue['status']; ?></td>
+			<td><?php echo $issue['flag']; ?></td>
+			<td class="actions">
+				<?php echo $this->Html->link(__('View'), array('controller' => 'issues', 'action' => 'view', $issue['id'])); ?>
+				<?php echo $this->Html->link(__('Edit'), array('controller' => 'issues', 'action' => 'edit', $issue['id'])); ?>
+				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'issues', 'action' => 'delete', $issue['id']), null, __('Are you sure you want to delete # %s?', $issue['id'])); ?>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+	</table>
+<?php endif; ?>
+
+	<div class="actions">
+		<ul>
+			<li><?php echo $this->Html->link(__('New Issue'), array('controller' => 'issues', 'action' => 'add')); ?> </li>
+		</ul>
+	</div>
+</div>
+<div class="related">
+	<h3><?php echo __('Related Submissions'); ?></h3>
+	<?php if (!empty($company['Submission'])): ?>
+	<table cellpadding = "0" cellspacing = "0">
+	<tr>
+		<th><?php echo __('Id'); ?></th>
+		<th><?php echo __('Company Id'); ?></th>
+		<th><?php echo __('Agen Id'); ?></th>
+		<th><?php echo __('Reporter Id'); ?></th>
+		<th><?php echo __('Service Id'); ?></th>
+		<th><?php echo __('Note'); ?></th>
+		<th><?php echo __('Status'); ?></th>
+		<th><?php echo __('Flag'); ?></th>
+		<th class="actions"><?php echo __('Actions'); ?></th>
+	</tr>
+	<?php foreach ($company['Submission'] as $submission): ?>
+		<tr>
+			<td><?php echo $submission['id']; ?></td>
+			<td><?php echo $submission['company_id']; ?></td>
+			<td><?php echo $submission['agen_id']; ?></td>
+			<td><?php echo $submission['reporter_id']; ?></td>
+			<td><?php echo $submission['service_id']; ?></td>
+			<td><?php echo $submission['note']; ?></td>
+			<td><?php echo $submission['status']; ?></td>
+			<td><?php echo $submission['flag']; ?></td>
+			<td class="actions">
+				<?php echo $this->Html->link(__('View'), array('controller' => 'submissions', 'action' => 'view', $submission['id'])); ?>
+				<?php echo $this->Html->link(__('Edit'), array('controller' => 'submissions', 'action' => 'edit', $submission['id'])); ?>
+				<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'submissions', 'action' => 'delete', $submission['id']), null, __('Are you sure you want to delete # %s?', $submission['id'])); ?>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+	</table>
+<?php endif; ?>
+
+	<div class="actions">
+		<ul>
+			<li><?php echo $this->Html->link(__('New Submission'), array('controller' => 'submissions', 'action' => 'add')); ?> </li>
 		</ul>
 	</div>
 </div>

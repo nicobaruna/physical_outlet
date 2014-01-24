@@ -11,9 +11,9 @@
 			<?php echo $this->Html->link($companyArea['Company']['id'], array('controller' => 'companies', 'action' => 'view', $companyArea['Company']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Nama'); ?></dt>
+		<dt><?php echo __('Area'); ?></dt>
 		<dd>
-			<?php echo h($companyArea['CompanyArea']['nama']); ?>
+			<?php echo $this->Html->link($companyArea['Area']['id'], array('controller' => 'areas', 'action' => 'view', $companyArea['Area']['id'])); ?>
 			&nbsp;
 		</dd>
 	</dl>
@@ -27,5 +27,7 @@
 		<li><?php echo $this->Html->link(__('New Company Area'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Companies'), array('controller' => 'companies', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Company'), array('controller' => 'companies', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Areas'), array('controller' => 'areas', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Area'), array('controller' => 'areas', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
