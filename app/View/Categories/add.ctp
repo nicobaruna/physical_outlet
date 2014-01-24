@@ -6,7 +6,7 @@
 		echo $this->Form->input('nama');
 		echo $this->Form->input('deskripsi');
 
-		echo $this->Form->input('parent_id', array('required' => FALSE, 'empty' => '', 'options' =>$parentCategories));
+		echo $this->Form->input('parent_id', array('required' => FALSE, 'empty' => 'Category', 'options' =>$parentCategories));
 
 	?>
 	</fieldset>

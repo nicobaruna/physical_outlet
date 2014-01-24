@@ -55,11 +55,20 @@ class IssuesController extends AppController {
 				$this->Session->setFlash(__('The issue could not be saved. Please, try again.'));
 			}
 		}
-		$companies = $this->Issue->Company->find('list');
+		$companies_all = $this->Issue->Company->find('all');
+		foreach ($companies_all as $key => $value) {
+			$companies[$value['Company']['id']] = $value['Company']['nama_perusahaan'];
+		}
 		$agens = $this->Issue->Agen->find('list');
-		$reporters = $this->Issue->Reporter->find('list');
-		$categories = $this->Issue->Category->find('list');
-		$this->set(compact('companies', 'agens', 'reporters', 'categories'));
+		$reporters_all = $this->Issue->Reporter->find('all');
+		foreach ($reporters_all as $key => $value) {
+			$reporters[$value['Reporter']['id']] = $value['Reporter']['nama'];
+		}
+		$categories_all = $this->Issue->Category->find('all');
+		foreach ($categories_all as $key => $value) {
+			$categories[$value['Category']['id']] = $value['Category']['nama'];
+		}
+		$this->set(compact('companies', 'agens','reporters','categories'));
 	}
 
 /**

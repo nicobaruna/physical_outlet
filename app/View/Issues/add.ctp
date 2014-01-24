@@ -3,16 +3,16 @@
 	<fieldset>
 		<legend><?php echo __('Add Issue'); ?></legend>
 	<?php
-		echo $this->Form->input('company_id');
-		echo $this->Form->input('agen_id');
-		echo $this->Form->input('reporter_id');
-		echo $this->Form->input('category_id');
+		echo $this->Form->input('company_id', array('empty' => 'Pilih Perusahaan'));
+		//echo $this->Form->input('agen_id');
+		echo $this->Form->input('reporter_id', array('empty' => 'Pilih Pelapor'));
+		echo $this->Form->input('category_id', array('empty' => 'Pilih Category'));
 		echo $this->Form->input('no_resi');
 		echo $this->Form->input('note');
-		echo $this->Form->input('link_gambar');
-		echo $this->Form->input('tanggal');
-		echo $this->Form->input('status');
-		echo $this->Form->input('flag');
+		echo $this->Form->file('link_gambar');
+		//echo $this->Form->input('tanggal');
+		echo $this->Form->input('status', array('options' => array('open'=>'Open', 'close'=>'Close')));
+		//echo $this->Form->input('flag');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

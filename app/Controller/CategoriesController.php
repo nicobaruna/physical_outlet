@@ -55,16 +55,12 @@ class CategoriesController extends AppController {
 				$this->Session->setFlash(__('The category could not be saved. Please, try again.'));
 			}
 		}
-<<<<<<< HEAD
-		$parentCategories = $this->Category->find('list');
-=======
 
 		$without_parent_id = array('conditions'=> array('Category.parent_id' => NULL));
 		$parentCategories_all = $this->Category->find('all',$without_parent_id);
 		foreach ($parentCategories_all as $key => $value) {
 			$parentCategories[$value['Category']['id']] = $value['Category']['nama'];
 		}
->>>>>>> 1b704004bef82613b4745b2f47879d99b868d943
 		$this->set(compact('parentCategories'));
 	}
 
@@ -90,15 +86,13 @@ class CategoriesController extends AppController {
 			$options = array('conditions' => array('Category.' . $this->Category->primaryKey => $id));
 			$this->request->data = $this->Category->find('first', $options);
 		}
-<<<<<<< HEAD
-		$parentCategories = $this->Category->ParentCategory->find('list');
-=======
+
 		$without_parent_id = array('conditions'=> array('Category.parent_id' => NULL));
 		$parentCategories_all = $this->Category->find('all',$without_parent_id);
+		$parentCategories = array();
 		foreach ($parentCategories_all as $key => $value) {
 			$parentCategories[$value['Category']['id']] = $value['Category']['nama'];
 		}
->>>>>>> 1b704004bef82613b4745b2f47879d99b868d943
 		$this->set(compact('parentCategories'));
 	}
 

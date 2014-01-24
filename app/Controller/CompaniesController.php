@@ -82,11 +82,7 @@ class CompaniesController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
-<<<<<<< HEAD
-		$this->Company->recursive = 2;
-=======
-		//$this->Company->recursive = 2;
->>>>>>> e84e7524e208d83193cac61a8ab744431bde3e03
+
 		if (!$this->Company->exists($id)) {
 			throw new NotFoundException(__('Invalid company'));
 		}
