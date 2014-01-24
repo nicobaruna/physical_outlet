@@ -3,12 +3,11 @@
 	
 	<fieldset>
 		<legend>Pelayanan Yang diinginkan</legend>
-		<?php foreach($services as $key=>$item) : ?> 
-		<?php if ($item['Service']['parent_id'] == NULL) {?>
-		<?php echo $this->Form->checkbox('CompanyService.'.$key.'.service_id',array('value'=>$item['Service']['id']));?>
-		<?php echo $this->Form->label($item['Service']['nama_layanan']) ?>
-		<?php } ?>
-		<?php endforeach; ?>
+		<?php 
+		
+			echo $this->form->input('CompanyServicen.nama_layanan', array('multiple' => 'checkbox', 'options' => $services, 'selected' => $selectedService));
+		
+		?>
 	</fieldset>
 
 	<fieldset>
@@ -28,10 +27,12 @@
 
 	<fieldset>
 		<legend>Bidang Usaha</legend>
-		<?php foreach($areas as $key=>$item) : ?> 
-		<?php echo $this->Form->checkbox('CompanyArea.'.$key.'.area_id',array('value'=>$item['Area']['id']));?>
-		<?php echo $this->Form->label($item['Area']['nama']) ?>
-		<?php endforeach; ?>
+		<?php 
+			
+			echo $this->form->input('CompanyArea.name', array('multiple' => 'checkbox', 'options' => $areas, 'selected' => $selectedArea));
+		
+		?>
+		
 	</fieldset>
 
 	<fieldset>

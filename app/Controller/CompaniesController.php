@@ -82,6 +82,7 @@ class CompaniesController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+		//$this->Company->recursive = 2;
 		if (!$this->Company->exists($id)) {
 			throw new NotFoundException(__('Invalid company'));
 		}
@@ -97,6 +98,28 @@ class CompaniesController extends AppController {
 			$options = array('conditions' => array('Company.' . $this->Company->primaryKey => $id));
 			$this->request->data = $this->Company->find('first', $options);			
 		}
+		
+		//get all areas
+		$services = $this->Company->CompanyService->Service->find('list',array('fields'=>array('id','nama_layanan')));
+		//get all services
+		$areas = $this->Company->CompanyArea->Area->find('list',array('fields'=>array('id','nama')));
+		
+		//selected area
+		$selectedArea = $this->getSelected($this->request->data['CompanyArea'] , 'area_id');
+		 
+		
+		//get seleceted services
+		$selectedService = $this->getSelected($this->request->data['CompanyService'] , 'service_id');
+		
+		$this->set(compact('areas','services','selectedArea','selectedService'));
+	}
+
+	function getSelected($data,$idKey){
+		foreach ($data as $key => $value) {
+			$selectedArea[] = $value[$idKey];
+		}
+		
+		return (!empty($selectedArea)) ? $selectedArea : array();
 	}
 
 /**
