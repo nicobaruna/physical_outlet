@@ -7,6 +7,7 @@
 			<th><?php echo $this->Paginator->sort('agen_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('reporter_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('service_id'); ?></th>
+			<th><?php echo $this->Paginator->sort('tanggal'); ?></th>
 			<th><?php echo $this->Paginator->sort('note'); ?></th>
 			<th><?php echo $this->Paginator->sort('status'); ?></th>
 			<th><?php echo $this->Paginator->sort('flag'); ?></th>
@@ -15,18 +16,11 @@
 	<?php foreach ($submissions as $submission): ?>
 	<tr>
 		<td><?php echo h($submission['Submission']['id']); ?>&nbsp;</td>
-		<td>
-			<?php echo $this->Html->link($submission['Company']['id'], array('controller' => 'companies', 'action' => 'view', $submission['Company']['id'])); ?>
-		</td>
-		<td>
-			<?php echo $this->Html->link($submission['Agen']['id'], array('controller' => 'agens', 'action' => 'view', $submission['Agen']['id'])); ?>
-		</td>
-		<td>
-			<?php echo $this->Html->link($submission['Reporter']['id'], array('controller' => 'reporters', 'action' => 'view', $submission['Reporter']['id'])); ?>
-		</td>
-		<td>
-			<?php echo $this->Html->link($submission['Service']['id'], array('controller' => 'services', 'action' => 'view', $submission['Service']['id'])); ?>
-		</td>
+		<td><?php echo h($submission['Submission']['company_id']); ?>&nbsp;</td>
+		<td><?php echo h($submission['Submission']['agen_id']); ?>&nbsp;</td>
+		<td><?php echo h($submission['Submission']['reporter_id']); ?>&nbsp;</td>
+		<td><?php echo h($submission['Submission']['service_id']); ?>&nbsp;</td>
+		<td><?php echo h($submission['Submission']['tanggal']); ?>&nbsp;</td>
 		<td><?php echo h($submission['Submission']['note']); ?>&nbsp;</td>
 		<td><?php echo h($submission['Submission']['status']); ?>&nbsp;</td>
 		<td><?php echo h($submission['Submission']['flag']); ?>&nbsp;</td>
@@ -56,15 +50,5 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('New Submission'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Companies'), array('controller' => 'companies', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Company'), array('controller' => 'companies', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Agens'), array('controller' => 'agens', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Agen'), array('controller' => 'agens', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Reporters'), array('controller' => 'reporters', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Reporter'), array('controller' => 'reporters', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Services'), array('controller' => 'services', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Service'), array('controller' => 'services', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Dokumens'), array('controller' => 'dokumens', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Dokumen'), array('controller' => 'dokumens', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

@@ -48,18 +48,24 @@ class SubmissionsController extends AppController {
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->Submission->create();
-			if ($this->Submission->save($this->request->data)) {
+			$this->request->data['Submission']['tanggal'] = date('Y-m-d H:i:s');
+			// echo "<pre>";
+			// var_dump($this->request->data);
+			// echo "</pre>";
+			// exit;
+			if ($this->Submission->saveAssociated($this->request->data)) {
 				$this->Session->setFlash(__('The submission has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				return $this->redirect(array('controller'=>'users','action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The submission could not be saved. Please, try again.'));
 			}
 		}
-		$companies = $this->Submission->Company->find('list',array('fields'=>array('id','nama_perusahaan')));
-		$agens = $this->Submission->Agen->find('list');
-		$reporters = $this->Submission->Reporter->find('list',array('fields'=>array('id','nama')));
-		$services = $this->Submission->Service->find('list',array('fields'=>array('id','nama_layanan')));
-		$this->set(compact('companies', 'agens', 'reporters', 'services'));
+
+		$companies = $this->Submission->Company->find('list', array('fields'=> 'id,nama_perusahaan'));
+		$reporters = $this->Submission->Reporter->find('list', array('fields'=> 'id,nama'));
+		$services = $this->Submission->Service->find('list', array('conditions'=>array('parent_id is NULL'),'fields'=>'id,nama_layanan'));
+
+		$this->set(compact('companies','reporters','services'));
 	}
 
 /**
@@ -84,11 +90,6 @@ class SubmissionsController extends AppController {
 			$options = array('conditions' => array('Submission.' . $this->Submission->primaryKey => $id));
 			$this->request->data = $this->Submission->find('first', $options);
 		}
-		$companies = $this->Submission->Company->find('list');
-		$agens = $this->Submission->Agen->find('list');
-		$reporters = $this->Submission->Reporter->find('list');
-		$services = $this->Submission->Service->find('list');
-		$this->set(compact('companies', 'agens', 'reporters', 'services'));
 	}
 
 /**

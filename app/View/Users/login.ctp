@@ -1,36 +1,24 @@
 <?php echo $this->Form->create('User',array('id'=>'validate')); ?>
-<div class=login-block>
-	<div class="block block-transparent">
-		<div class=head>
-			<h1 class="center">Welcome to Physical Outlet</h1>
-			<div class=user>
-				<div class="info user-change">
-					<img src="img/example/user/dmitry_b.jpg" class="img-circle img-thumbnail"/>
-				</div>
-			</div>
-		</div>
-		<div class="content controls npt">
-			<div class="form-row user-change-row">
-				<div class="col-md-12">
-					<div class="input-group">
-						<div class="input-group-addon">
-							<span class=icon-user></span>
-						</div>					
-						<?php echo $this->Form->input('username',array('class'=>'validate[required] form-control','placeholder'=>'Username','label'=>false));  ?>
-						<?php echo $this->Form->input('password',array('class'=>'validate[required] form-control','placeholder'=>'Password','label'=>false));?>
-					</div>
-				</div>
-			</div>
-			<div class=form-row>
-				<div class="col-md-12">
-					<input type="submit" class="btn btn-default btn-block btn-clean" value="login" />
-				</div>
-			</div>
-			<div class="form-row">
-				<div class="col-md-12">
-					<a href=# class="btn btn-link btn-block">Forgot your password?</a>
-				</div>
-			</div>
-		</div>
+<?php $this->Html->css("bootstrap", null, array("inline"=>true)); ?>
+<?php $this->Html->css("color", null, array("inline"=>false)); ?>
+<?php $this->Html->css("site", null, array("inline"=>false)); ?>
+<?php $this->Html->css("carousel", null, array("inline"=>false)); ?>
+
+<div class="container marketing bg-transparent" id="contents">
+  <!-- START THE FEATURETTES -->
+  <div class="row featurette" style="margin-top:30px; margin-bottom:30px;">
+    <div class="col-md-5">
+      <?php echo $this->Html->image('logopelindo.jpg', array('alt' => 'logo')); ?>
 	</div>
+	<div class="col-md-7 ">
+      <h2 class="featurette-heading" style="font-size: 40px;">Welcome to IPC Customer Services</h2>
+		<?php echo $this->Form->input('username',array('class'=>'validate[required] form-control','placeholder'=>'Username','label'=>false));  ?>
+		<?php echo $this->Form->input('password',array('class'=>'validate[required] form-control','placeholder'=>'Password','label'=>false));?>
+		<div class="control-group" style="margin-top:10px;">
+			<div class="controls">
+			  <input type="submit" class="btn bg-cyan" value="login" />
+			</div>
+		  </div>
+    	</div>
+  	</div>
 </div>

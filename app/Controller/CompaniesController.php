@@ -58,7 +58,10 @@ class CompaniesController extends AppController {
 					unset($this->request->data['CompanyArea'][$key]);
 				}
 			}
+			// echo "<pre>";
 			// var_dump($this->request->data);
+			// exit;
+			// echo "</pre>";
 			// exit;
 			if ($this->Company->saveAssociated($this->request->data,array('deep'=>TRUE))) {
 				$this->Session->setFlash(__('The company has been saved.'));

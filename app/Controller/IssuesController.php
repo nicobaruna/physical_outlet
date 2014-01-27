@@ -49,9 +49,19 @@ class IssuesController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Issue->create();
 			$this->request->data['Issue']['tanggal'] = date('Y-m-d H:i:s');
+
+			$this->request->data['HistoryIssue']['tanggal'] = date('Y-m-d H:i:s');
+			$this->request->data['HistoryIssue']['agen_id'] = $this->request->data['Issue']['agen_id'];
+			$this->request->data['HistoryIssue']['status'] = $this->request->data['Issue']['status'];
+
+			// echo "<pre>";
+			// var_dump($this->request->data);
+			// echo "</pre>";
+			// exit;
+			
 			if ($this->Issue->saveAssociated($this->request->data,array('deep'=>TRUE))) {
 				$this->Session->setFlash(__('The issue has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				return $this->redirect(array('controller'=>'users','action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The issue could not be saved. Please, try again.'));
 			}
