@@ -32,7 +32,7 @@ App::uses('CakeEmail', 'Network/Email');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
-	public $components = array('RequestHandler', 'Session', 'DebugKit.Toolbar', 'Auth' => array('loginRedirect' => array('controller' => 'users', 'action' => 'index'),
+	public $components = array('RequestHandler', 'Session', 'DebugKit.Toolbar', 'Auth' => array('loginRedirect' => array('controller' => 'pages', 'action' => 'home'),
 	 'logoutRedirect' => array('controller' => 'users', 'action' => 'login')));
 	public function beforeFilter() {
 		//$this -> Auth -> allow('index', 'view');
