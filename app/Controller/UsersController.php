@@ -130,6 +130,7 @@ class UsersController extends AppController {
 
 				// jika dia agen berarti set logagen dan redirect nya ke halaman agen
 				if($agens){
+					$this->Session->write('Auth.User.agen_id', $agens['Agen']['id']);
 					// jika agen CSR
 					if($agens['Agen']['level'] == '1'){
 						return $this->redirect(array("controller"=>"users", "action"=>"index"));

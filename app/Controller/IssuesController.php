@@ -48,7 +48,8 @@ class IssuesController extends AppController {
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->Issue->create();
-			if ($this->Issue->save($this->request->data)) {
+			$this->request->data['Issue']['tanggal'] = date('Y-m-d H:i:s');
+			if ($this->Issue->saveAssociated($this->request->data,array('deep'=>TRUE))) {
 				$this->Session->setFlash(__('The issue has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {

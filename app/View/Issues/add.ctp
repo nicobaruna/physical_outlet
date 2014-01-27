@@ -4,13 +4,13 @@
 		<legend><?php echo __('Add Issue'); ?></legend>
 	<?php
 		echo $this->Form->input('company_id', array('empty' => 'Pilih Perusahaan'));
-		//echo $this->Form->input('agen_id');
+		echo $this->Form->hidden('agen_id',array('value'=>$this->Session->read('Auth.User.agen_id')));
 		echo $this->Form->input('reporter_id', array('empty' => 'Pilih Pelapor'));
 		echo $this->Form->input('category_id', array('empty' => 'Pilih Category'));
 		echo $this->Form->input('no_resi');
 		echo $this->Form->input('note');
 		echo $this->Form->file('link_gambar');
-		//echo $this->Form->input('tanggal');
+		//echo $this->Form->hidden('tanggal',array('value'=>date("Y-m-d H:i:s")));
 		echo $this->Form->input('status', array('options' => array('open'=>'Open', 'close'=>'Close')));
 		//echo $this->Form->input('flag');
 	?>
