@@ -81,20 +81,31 @@ class SubmissionsController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+		$this->Submission->recursive = 2;
 		if (!$this->Submission->exists($id)) {
 			throw new NotFoundException(__('Invalid submission'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
-			if ($this->Submission->save($this->request->data)) {
-				$this->Session->setFlash(__('The submission has been saved.'));
+
+			$this->request->data['HistorySubmission'][0]['tanggal'] = date('Y-m-d H:i:s');
+			$this->request->data['HistorySubmission'][0]['agen_id'] = $this->Session->read('Auth.User.agen_id');
+			$this->request->data['HistorySubmission'][0]['status'] = $this->request->data['Submission']['status'];
+			$this->request->data['Submission']['tanggal'] = date('Y-m-d H:i:s');
+			
+			// echo "<pre>";
+			// var_dump($this->request->data);
+			// echo "</pre>";
+			// exit;
+
+			if ($this->Submission->saveAssociated($this->request->data,array('deep'=>TRUE))) {
+				$this->Session->setFlash(__('The History submission has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The submission could not be saved. Please, try again.'));
 			}
-		} else {
-			$options = array('conditions' => array('Submission.' . $this->Submission->primaryKey => $id));
-			$this->request->data = $this->Submission->find('first', $options);
 		}
+		$options = array('conditions' => array('Submission.' . $this->Submission->primaryKey => $id));
+		$this->request->data = $this->Submission->find('first', $options);	
 	}
 
 /**

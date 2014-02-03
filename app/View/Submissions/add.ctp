@@ -9,7 +9,7 @@
 		echo $this->Form->input('service_id',array('empty'=>'Choose One'));
 		// echo $this->Form->input('tanggal');
 		echo $this->Form->input('note');
-		echo $this->Form->input('status', array('options' => array('open'=>'Open', 'close'=>'Close')));
+		echo $this->Form->input('status', array('options' => array('open'=>'Open', 'closed'=>'Close')));
 		// echo $this->Form->input('flag');
 	?>
 	</fieldset>

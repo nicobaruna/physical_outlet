@@ -53,6 +53,7 @@ class IssuesController extends AppController {
 			$this->request->data['HistoryIssue'][0]['tanggal'] = date('Y-m-d H:i:s');
 			$this->request->data['HistoryIssue'][0]['agen_id'] = $this->request->data['Issue']['agen_id'];
 			$this->request->data['HistoryIssue'][0]['status'] = $this->request->data['Issue']['status'];
+			$this->request->data['HistoryIssue'][0]['comment'] = $this->request->data['Issue']['note'];
 
 			// echo "<pre>";
 			// var_dump($this->request->data);
@@ -90,24 +91,39 @@ class IssuesController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+		$this->Issue->recursive = 2;
 		if (!$this->Issue->exists($id)) {
 			throw new NotFoundException(__('Invalid issue'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
-			if ($this->Issue->save($this->request->data)) {
-				$this->Session->setFlash(__('The issue has been saved.'));
+			
+			$this->request->data['HistoryIssue'][0]['tanggal'] = date('Y-m-d H:i:s');
+			$this->request->data['HistoryIssue'][0]['agen_id'] = $this->Session->read('Auth.User.agen_id');
+			$this->request->data['HistoryIssue'][0]['status'] = $this->request->data['Issue']['status'];
+			$this->request->data['Issue']['tanggal'] = date('Y-m-d H:i:s');
+			
+			
+
+			// echo "<pre>";
+			// var_dump($this->request->data);
+			// echo "</pre>";
+			// exit;
+
+			if ($this->Issue->saveAssociated($this->request->data,array('deep'=>TRUE))) {
+				$this->Session->setFlash(__('The History Issue has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The issue could not be saved. Please, try again.'));
+
 			}
-		} else {
-			$options = array('conditions' => array('Issue.' . $this->Issue->primaryKey => $id));
-			$this->request->data = $this->Issue->find('first', $options);
 		}
-		$companies = $this->Issue->Company->find('list');
-		$agens = $this->Issue->Agen->find('list');
-		$reporters = $this->Issue->Reporter->find('list');
-		$categories = $this->Issue->Category->find('list');
+		$options = array('conditions' => array('Issue.' . $this->Issue->primaryKey => $id));
+		$this->request->data = $this->Issue->find('first', $options);
+
+		$companies = $this->Issue->Company->find('list',array('fields'=>'id,nama_perusahaan'));
+		$agens = $this->Issue->Agen->find('list',array('fields'=>'id,nama'));
+		$reporters = $this->Issue->Reporter->find('list',array('fields'=>'id,nama'));
+		$categories = $this->Issue->Category->find('list',array('fields'=>'id,nama'));
 		$this->set(compact('companies', 'agens', 'reporters', 'categories'));
 	}
 

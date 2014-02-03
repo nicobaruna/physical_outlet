@@ -11,7 +11,7 @@
 		echo $this->Form->input('note');
 		echo $this->Form->file('link_gambar', array('required'=>FALSE));
 		//echo $this->Form->hidden('tanggal',array('value'=>date("Y-m-d H:i:s")));
-		echo $this->Form->input('status', array('options' => array('open'=>'Open', 'close'=>'Close')));
+		echo $this->Form->input('status', array('options' => array('open'=>'Open', 'closed'=>'Close')));
 		//echo $this->Form->input('flag');
 	?>
 	</fieldset>
