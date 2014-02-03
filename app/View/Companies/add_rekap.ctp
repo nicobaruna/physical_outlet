@@ -1,5 +1,3 @@
-
-
 <div class="row featurette" id="registrationform">	
 	<div class="col-md-1"></div>
 	<div class="col-md-10" id="registrationbox">
@@ -176,13 +174,13 @@
 						  Lainnya
 						</label>-->
 						<input type="hidden" name="data[CompanyResponsible][0][tanda_pengenal]" id="CompanyResponsible0TandaPengenal_" value />
-						<input type="checkbox" name="data[CompanyResponsible][0][tanda_pengenal]" id="ktpcheck" value="KTP" required="required" />
+						<input type="checkbox" name="data[CompanyResponsible][0][tanda_pengenal]" id="ktpcheck" value="KTP" required="false" />
 						<label for="ktpcheck" >KTP</label>
-						<input type="checkbox" name="data[CompanyResponsible][0][tanda_pengenal]" id="simcheck" value="SIM" required="required" />
+						<input type="checkbox" name="data[CompanyResponsible][0][tanda_pengenal]" id="simcheck" value="SIM" required="false" />
 						<label for="simcheck" >SIM</label>
-						<input type="checkbox" name="data[CompanyResponsible][0][tanda_pengenal]" id="passportcheck" value="Passport" required="required" />
+						<input type="checkbox" name="data[CompanyResponsible][0][tanda_pengenal]" id="passportcheck" value="Passport" required="false" />
 						<label for="passportcheck" >Passport</label>
-						<input type="checkbox" name="data[CompanyResponsible][0][tanda_pengenal]" id="lainnyacheck" value="Lainnya" required="required" />
+						<input type="checkbox" name="data[CompanyResponsible][0][tanda_pengenal]" id="lainnyacheck" value="Lainnya" required="false" />
 						<label for="lainnyacheck" >Lainnya</label>
 						<?php //echo $this->Form->input('CompanyResponsible.0.tanda_pengenal',array('label'=>false,'options'=>array(0=>'Please select','KTP'=>'KTP','SIM'=>'SIM','PASSPORT'=>'PASSPORT')));?>
 					  </div>
