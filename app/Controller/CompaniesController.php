@@ -25,6 +25,59 @@ class CompaniesController extends AppController {
 		$this->set('companies', $this->Paginator->paginate());
 	}
 
+	public function generatePassword() {
+    $length = 8;
+    $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    $count = mb_strlen($chars);
+
+    for ($i = 0, $result = ''; $i < $length; $i++) {
+        $index = rand(0, $count - 1);
+        $result .= mb_substr($chars, $index, 1);
+    }
+
+    return $result;
+	}
+
+	public function add_customer(){
+		if($this->request->is('post')){
+			$this->loadModel('User');
+			$this->User->create();
+			$this->request->data['User']['password'] = $this->generatePassword();
+			// echo "<pre>";
+			// var_dump($this->request->data);
+			// exit;
+			// echo "</pre>";
+			// exit;
+			if ($this->User->saveAssociated($this->request->data,array('deep'=>TRUE))) {
+				$this->Session->setFlash(__('The Customer has been saved.'));
+
+				return $this->redirect(array('controller'=>'users','action' => 'index_backroom'));
+			} else {
+				$this->Session->setFlash(__('The company could not be saved. Please, try again.'));
+			}
+		}else{
+			$this->Company->recursive = 0;
+			$this->set('companies', $this->Paginator->paginate());
+		}
+	}
+	public function save_customer($id = null){
+		if($this->request->is('post')){
+			$this->User->create();
+			echo "<pre>";
+			var_dump($this->request->data);
+			exit;
+			echo "</pre>";
+			exit;
+			if ($this->Company->saveAssociated($this->request->data,array('deep'=>TRUE))) {
+				$this->Session->setFlash(__('The company has been saved.'));
+
+				return $this->redirect(array('controller'=>'users','action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The company could not be saved. Please, try again.'));
+			}
+		}
+	}
+
 /**
  * view method
  *
@@ -66,7 +119,7 @@ class CompaniesController extends AppController {
 			if ($this->Company->saveAssociated($this->request->data,array('deep'=>TRUE))) {
 				$this->Session->setFlash(__('The company has been saved.'));
 
-				return $this->redirect(array('action' => 'index'));
+				return $this->redirect(array('controller'=>'users','action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The company could not be saved. Please, try again.'));
 			}
@@ -90,10 +143,16 @@ class CompaniesController extends AppController {
 			throw new NotFoundException(__('Invalid company'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
+
+			echo "<pre>";
+			var_dump($this->request->data);
+			echo "</pre>";
+			exit;
+
 			if ($this->Company->saveAssociated($this->request->data,array('deep'=>TRUE))) {
 				$this->Session->setFlash(__('The company has been saved.'));
 				
-				return $this->redirect(array('action' => 'index'));
+				return $this->redirect(array('controller'=>'users','action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The company could not be saved. Please, try again.'));
 			}
@@ -144,4 +203,6 @@ class CompaniesController extends AppController {
 			$this->Session->setFlash(__('The company could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
-	}}
+	}
+
+}

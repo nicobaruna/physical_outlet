@@ -4,7 +4,12 @@
 		<legend><?php echo __('Add Agen'); ?></legend>
 	<?php
 		echo $this->Form->input('user_id');
-		echo $this->Form->input('employee_id');
+		echo $this->Form->input('nama');
+		echo $this->Form->input('alamat');
+		echo $this->Form->input('tempat_lahir');
+		echo $this->Form->input('tanggal_lahir');
+		echo $this->Form->input('no_telepon');
+		echo $this->Form->input('email');
 		echo $this->Form->input('level');
 	?>
 	</fieldset>

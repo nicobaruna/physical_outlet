@@ -49,6 +49,11 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('New Submission'), array('action' => 'add')); ?></li>
+		<?php if($this->Session->read('Auth.User.agen_level') == 1) { ?>
+			<li><?php echo $this->Html->link(__('Home'), array('controller'=>'users','action' => 'index')); ?></li>
+			<li><?php echo $this->Html->link(__('New Submission'), array('action' => 'add')); ?></li>
+		<?php } else if($this->Session->read('Auth.User.agen_level') == 2) { ?>
+			<li><?php echo $this->Html->link(__('Home'), array('controller'=>'users','action' => 'index_backroom')); ?></li>
+		<?php } ?>
 	</ul>
 </div>

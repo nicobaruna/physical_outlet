@@ -17,7 +17,7 @@
 		<legend><?php echo __('Masukan Berkas (Jika Ada)'); ?></legend>
 	<?php
 		echo $this->Form->file('Dokumen.0.link_gambar',array('required'=>FALSE));
-		echo $this->Form->input('Dokumen.0.deskripsi',array('required'=>FALSE));
+		echo $this->Form->input('Dokumen.0.deskrpisi',array('required'=>FALSE));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
@@ -25,7 +25,6 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-
-		<li><?php echo $this->Html->link(__('List Submissions'), array('action' => 'index')); ?></li>
+		<li><?php echo $this->Html->link(__('Home'), array('controller'=>'users','action' => 'index')); ?></li>
 	</ul>
 </div>

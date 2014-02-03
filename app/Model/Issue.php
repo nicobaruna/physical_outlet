@@ -7,8 +7,16 @@ App::uses('AppModel', 'Model');
  * @property Agen $Agen
  * @property Reporter $Reporter
  * @property Category $Category
+ * @property HistoryIssue $HistoryIssue
  */
 class Issue extends AppModel {
+
+/**
+ * Display field
+ *
+ * @var string
+ */
+	public $displayField = 'id';
 
 /**
  * Validation rules
@@ -145,4 +153,26 @@ class Issue extends AppModel {
 			'order' => ''
 		)
 	);
+
+/**
+ * hasMany associations
+ *
+ * @var array
+ */
+	public $hasMany = array(
+		'HistoryIssue' => array(
+			'className' => 'HistoryIssue',
+			'foreignKey' => 'issue_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
+	);
+
 }

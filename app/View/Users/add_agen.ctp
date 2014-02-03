@@ -1,9 +1,8 @@
 <div class="users form">
 <?php echo $this->Form->create('User'); ?>
 	<fieldset>
-		<legend><?php echo __('Edit User'); ?></legend>
+		<legend><?php echo __('Add Agen'); ?></legend>
 	<?php
-		echo $this->Form->input('id');
 		echo $this->Form->input('username');
 		echo $this->Form->input('password');
 		echo $this->Form->input('status');
@@ -12,7 +11,6 @@
 	<fieldset>
 		<legend><?php echo __('Add Agen'); ?></legend>
 	<?php
-		echo $this->Form->hidden('Agen.0.id');
 		echo $this->Form->input('Agen.0.nama');
 		echo $this->Form->input('Agen.0.alamat');
 		echo $this->Form->input('Agen.0.tempat_lahir');

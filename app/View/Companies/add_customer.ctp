@@ -1,5 +1,5 @@
 <div class="companies index">
-	<h2><?php echo __('Companies'); ?></h2>
+	<h2><?php echo __('Add Customer'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
@@ -14,25 +14,33 @@
 			<th><?php echo $this->Paginator->sort('group_usaha'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
+	
 	<?php foreach ($companies as $company): ?>
+	<?php echo $this->Form->create('User'); ?>
 	<tr>
-		<td><?php echo h($company['Company']['id']); ?>&nbsp;</td>
+		<td><?php echo h($company['Company']['id']); echo $this->Form->hidden('Company.0.id',array('value'=>$company['Company']['id']));?>&nbsp;</td>
 		<td><?php echo h($company['Company']['nama_perusahaan']); ?>&nbsp;</td>
 		<td><?php echo h($company['Company']['npwp']); ?>&nbsp;</td>
 		<td><?php echo h($company['Company']['alamat']); ?>&nbsp;</td>
-		<td><?php echo h($company['Company']['email']); ?>&nbsp;</td>
+		<td><?php echo h($company['Company']['email']); 
+			echo $this->Form->hidden('username',array('value'=>$company['Company']['email']));
+			echo $this->Form->hidden('status',array('value'=>'1'));
+		?>&nbsp;</td>
 		<td><?php echo h($company['Company']['tingkat_organisasi']); ?>&nbsp;</td>
 		<td><?php echo h($company['Company']['alamat_penagihan']); ?>&nbsp;</td>
 		<td><?php echo h($company['Company']['masa_berlaku']); ?>&nbsp;</td>
 		<td><?php echo h($company['Company']['no_telepon']); ?>&nbsp;</td>
 		<td><?php echo h($company['Company']['group_usaha']); ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $company['Company']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $company['Company']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $company['Company']['id']), null, __('Are you sure you want to delete # %s?', $company['Company']['id'])); ?>
+			<?php 
+				if($company['Company']['user_id'] == NULL){
+					echo $this->Form->end(__('Add'));
+				}
+			?>
 		</td>
 	</tr>
-<?php endforeach; ?>
+	
+	<?php endforeach; ?>
 	</table>
 	<p>
 	<?php
@@ -50,8 +58,7 @@
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
-	<ul>	
-		<li><?php echo $this->Html->link(__('Home'), array('controller'=>'users','action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('Regitration Company'), array('action' => 'add')); ?></li>
+	<ul>
+		<li><?php echo $this->Html->link(__('Home'), array('controller'=>'users','action' => 'index_backroom')); ?></li>
 	</ul>
 </div>

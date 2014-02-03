@@ -32,6 +32,21 @@ class UsersController extends AppController {
 		$this->set('users', $this->Paginator->paginate());
 	}
 
+	public function index_backroom() {
+		$this->User->recursive = 0;
+		$this->set('users', $this->Paginator->paginate());
+	}
+
+	public function index_admin() {
+		$this->User->recursive = 0;
+		$this->set('users', $this->Paginator->paginate());
+	}
+
+	public function list_user(){
+		$this->User->recursive = 0;
+		$this->set('users', $this->Paginator->paginate());
+	}
+
 /**
  * view method
  *
@@ -64,6 +79,39 @@ class UsersController extends AppController {
 		}
 	}
 
+	public function add_agen(){
+		if ($this->request->is('post')) {
+			$this->User->create();
+			// var_dump($this->request->data);
+			// exit;
+			if ($this->User->saveAssociated($this->request->data,array('deep'=>TRUE))) {
+				$this->Session->setFlash(__('The user has been saved.'));
+				return $this->redirect(array('action' => 'index_admin'));
+			} else {
+				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+			}
+		}
+	}
+
+	public function add_customer(){
+		if ($this->request->is('post')) {
+			$this->User->create();
+			if ($this->User->saveAssociated($this->request->data)) {
+				$this->Session->setFlash(__('The user has been saved.'));
+				return $this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+			}
+		}
+		$this->User->recursive = 0;	
+		//$companies = $this->User->Company->find('all',array('conditions'=>array('user_id is NULL')));
+		
+		$this->set('companies');
+		// ambil data dari company..
+		// cek dari company tersebut, ada ga yang user_id nya NULL dan jadikan sebagai list dari calon user dari customer 
+		// lempar variable nya view nya.
+	}
+
 /**
  * edit method
  *
@@ -76,9 +124,13 @@ class UsersController extends AppController {
 			throw new NotFoundException(__('Invalid user'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
-			if ($this->User->save($this->request->data)) {
+			echo "<pre>";
+			var_dump($this->request->data);
+			echo "</pre>";
+			exit;
+			if ($this->User->saveAssociated($this->request->data,array('deep'=>TRUE))) {
 				$this->Session->setFlash(__('The user has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				return $this->redirect(array('action' => 'index_admin'));
 			} else {
 				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
 			}
@@ -115,7 +167,7 @@ class UsersController extends AppController {
 			if ($this -> Auth -> login()) {
 				// cek dulu dia ada di agen atau di costumer dengan id nya
 				$agens = $this->User->Agen->findByUserId($this->Session->read('Auth.User.id'));
-				$costumers = $this->User->Customer->findByUserId($this->Session->read('Auth.User.id'));
+				$costumers = $this->User->Company->findByUserId($this->Session->read('Auth.User.id'));
 
 				$log = new LogUsersController();
 				$data  = array(
@@ -131,17 +183,18 @@ class UsersController extends AppController {
 				// jika dia agen berarti set logagen dan redirect nya ke halaman agen
 				if($agens){
 					$this->Session->write('Auth.User.agen_id', $agens['Agen']['id']);
+					$this->Session->write('Auth.User.agen_level', $agens['Agen']['level']);
 					// jika agen CSR
 					if($agens['Agen']['level'] == '1'){
 						return $this->redirect(array("controller"=>"users", "action"=>"index"));
 					}
 					// jika agen backroom
 					else if($agens['Agen']['level'] == '2'){
-						
+						return $this->redirect(array("controller"=>"users", "action"=>"index_backroom"));
 					}
 					// jika agen manage user
 					else if($agens['Agen']['level'] == '3'){
-						
+						return $this->redirect(array("controller"=>"users", "action"=>"index_admin"));
 					}
 					
 				}else if($costumers){

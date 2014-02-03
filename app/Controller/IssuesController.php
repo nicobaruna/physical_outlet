@@ -50,9 +50,9 @@ class IssuesController extends AppController {
 			$this->Issue->create();
 			$this->request->data['Issue']['tanggal'] = date('Y-m-d H:i:s');
 
-			$this->request->data['HistoryIssue']['tanggal'] = date('Y-m-d H:i:s');
-			$this->request->data['HistoryIssue']['agen_id'] = $this->request->data['Issue']['agen_id'];
-			$this->request->data['HistoryIssue']['status'] = $this->request->data['Issue']['status'];
+			$this->request->data['HistoryIssue'][0]['tanggal'] = date('Y-m-d H:i:s');
+			$this->request->data['HistoryIssue'][0]['agen_id'] = $this->request->data['Issue']['agen_id'];
+			$this->request->data['HistoryIssue'][0]['status'] = $this->request->data['Issue']['status'];
 
 			// echo "<pre>";
 			// var_dump($this->request->data);

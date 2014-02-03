@@ -8,12 +8,37 @@
 		</dd>
 		<dt><?php echo __('User'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($agen['User']['id'], array('controller' => 'users', 'action' => 'view', $agen['User']['id'])); ?>
+			<?php echo $this->Html->link($agen['User']['username'], array('controller' => 'users', 'action' => 'view', $agen['User']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Employee'); ?></dt>
+		<dt><?php echo __('Nama'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($agen['Employee']['id'], array('controller' => 'employees', 'action' => 'view', $agen['Employee']['id'])); ?>
+			<?php echo h($agen['Agen']['nama']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Alamat'); ?></dt>
+		<dd>
+			<?php echo h($agen['Agen']['alamat']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Tempat Lahir'); ?></dt>
+		<dd>
+			<?php echo h($agen['Agen']['tempat_lahir']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Tanggal Lahir'); ?></dt>
+		<dd>
+			<?php echo h($agen['Agen']['tanggal_lahir']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('No Telepon'); ?></dt>
+		<dd>
+			<?php echo h($agen['Agen']['no_telepon']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Email'); ?></dt>
+		<dd>
+			<?php echo h($agen['Agen']['email']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Level'); ?></dt>
@@ -175,6 +200,7 @@
 		<th><?php echo __('Agen Id'); ?></th>
 		<th><?php echo __('Reporter Id'); ?></th>
 		<th><?php echo __('Service Id'); ?></th>
+		<th><?php echo __('Tanggal'); ?></th>
 		<th><?php echo __('Note'); ?></th>
 		<th><?php echo __('Status'); ?></th>
 		<th><?php echo __('Flag'); ?></th>
@@ -187,6 +213,7 @@
 			<td><?php echo $submission['agen_id']; ?></td>
 			<td><?php echo $submission['reporter_id']; ?></td>
 			<td><?php echo $submission['service_id']; ?></td>
+			<td><?php echo $submission['tanggal']; ?></td>
 			<td><?php echo $submission['note']; ?></td>
 			<td><?php echo $submission['status']; ?></td>
 			<td><?php echo $submission['flag']; ?></td>

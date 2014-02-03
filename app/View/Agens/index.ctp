@@ -4,7 +4,12 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('user_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('employee_id'); ?></th>
+			<th><?php echo $this->Paginator->sort('nama'); ?></th>
+			<th><?php echo $this->Paginator->sort('alamat'); ?></th>
+			<th><?php echo $this->Paginator->sort('tempat_lahir'); ?></th>
+			<th><?php echo $this->Paginator->sort('tanggal_lahir'); ?></th>
+			<th><?php echo $this->Paginator->sort('no_telepon'); ?></th>
+			<th><?php echo $this->Paginator->sort('email'); ?></th>
 			<th><?php echo $this->Paginator->sort('level'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
@@ -12,11 +17,14 @@
 	<tr>
 		<td><?php echo h($agen['Agen']['id']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($agen['User']['id'], array('controller' => 'users', 'action' => 'view', $agen['User']['id'])); ?>
+			<?php echo $this->Html->link($agen['User']['username'], array('controller' => 'users', 'action' => 'view', $agen['User']['id'])); ?>
 		</td>
-		<td>
-			<?php echo $this->Html->link($agen['Employee']['id'], array('controller' => 'employees', 'action' => 'view', $agen['Employee']['id'])); ?>
-		</td>
+		<td><?php echo h($agen['Agen']['nama']); ?>&nbsp;</td>
+		<td><?php echo h($agen['Agen']['alamat']); ?>&nbsp;</td>
+		<td><?php echo h($agen['Agen']['tempat_lahir']); ?>&nbsp;</td>
+		<td><?php echo h($agen['Agen']['tanggal_lahir']); ?>&nbsp;</td>
+		<td><?php echo h($agen['Agen']['no_telepon']); ?>&nbsp;</td>
+		<td><?php echo h($agen['Agen']['email']); ?>&nbsp;</td>
 		<td><?php echo h($agen['Agen']['level']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $agen['Agen']['id'])); ?>

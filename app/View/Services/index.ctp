@@ -41,10 +41,11 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
+		<?php if($this->Session->read('Auth.User.agen_level') == 2) { ?>
+			<li><?php echo $this->Html->link(__('Home'), array('controller'=>'users','action' => 'index_backroom')); ?></li>
+		<?php } else if($this->Session->read('Auth.User.agen_level') == 3) { ?>
+			<li><?php echo $this->Html->link(__('Home'), array('controller'=>'users','action' => 'index_admin')); ?></li>
+		<?php } ?>
 		<li><?php echo $this->Html->link(__('New Service'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Services'), array('controller' => 'services', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Parent Service'), array('controller' => 'services', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Submissions'), array('controller' => 'submissions', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Submission'), array('controller' => 'submissions', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

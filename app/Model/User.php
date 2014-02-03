@@ -1,10 +1,11 @@
 <?php
 App::uses('AppModel', 'Model');
+App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
 /**
  * User Model
  *
  * @property Agen $Agen
- * @property Customer $Customer
+ * @property Company $Company
  */
 class User extends AppModel {
 
@@ -54,6 +55,13 @@ class User extends AppModel {
 	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
+	public function beforeSave($options = array()) {
+	    if (isset($this->data[$this->alias]['password'])) {
+	        $passwordHasher = new SimplePasswordHasher();
+	        $this->data[$this->alias]['password'] = $passwordHasher->hash($this->data[$this->alias]['password']);
+	    }
+	    return true;
+	}
 
 /**
  * hasMany associations
@@ -74,8 +82,8 @@ class User extends AppModel {
 			'finderQuery' => '',
 			'counterQuery' => ''
 		),
-		'Customer' => array(
-			'className' => 'Customer',
+		'Company' => array(
+			'className' => 'Company',
 			'foreignKey' => 'user_id',
 			'dependent' => false,
 			'conditions' => '',

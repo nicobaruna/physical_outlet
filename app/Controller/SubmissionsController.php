@@ -49,6 +49,11 @@ class SubmissionsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Submission->create();
 			$this->request->data['Submission']['tanggal'] = date('Y-m-d H:i:s');
+
+			$this->request->data['HistorySubmission'][0]['tanggal'] = date('Y-m-d H:i:s');
+			$this->request->data['HistorySubmission'][0]['agen_id'] = $this->request->data['Submission']['agen_id'];
+			$this->request->data['HistorySubmission'][0]['status'] = $this->request->data['Submission']['status'];
+
 			// echo "<pre>";
 			// var_dump($this->request->data);
 			// echo "</pre>";

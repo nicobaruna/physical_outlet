@@ -56,7 +56,7 @@ class AgensController extends AppController {
 			}
 		}
 		$users = $this->Agen->User->find('list');
-		$employees = $this->Agen->Employee->find('list', array('fields'=>'id,nama'));
+		// $employees = $this->Agen->Employee->find('list');
 		$this->set(compact('users', 'employees'));
 	}
 

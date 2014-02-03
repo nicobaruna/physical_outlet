@@ -4,8 +4,6 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('New User'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('New Employee'), array('controller'=>'employees','action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('Registration'), array('controller' => 'companies','action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('Complain Handling'), array('controller' => 'issues','action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('Complain Tracking'), array('controller' => 'issues','action' => 'index')); ?></li>

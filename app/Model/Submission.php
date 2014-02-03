@@ -8,8 +8,16 @@ App::uses('AppModel', 'Model');
  * @property Reporter $Reporter
  * @property Service $Service
  * @property Dokumen $Dokumen
+ * @property HistorySubmission $HistorySubmission
  */
 class Submission extends AppModel {
+
+/**
+ * Display field
+ *
+ * @var string
+ */
+	public $displayField = 'id';
 
 /**
  * Validation rules
@@ -135,6 +143,19 @@ class Submission extends AppModel {
 	public $hasMany = array(
 		'Dokumen' => array(
 			'className' => 'Dokumen',
+			'foreignKey' => 'submission_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'HistorySubmission' => array(
+			'className' => 'HistorySubmission',
 			'foreignKey' => 'submission_id',
 			'dependent' => false,
 			'conditions' => '',
